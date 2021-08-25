@@ -2,7 +2,7 @@
     {
         "fieldType": "text",
         "columnId": "county",
-        "name": "County or City",
+        "name": "County or City or Name of Hospital",
         "type": "editable",
         "value": ""
     },

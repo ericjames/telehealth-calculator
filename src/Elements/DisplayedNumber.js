@@ -7,13 +7,17 @@ const DisplayedNumber = ({ result, type }) => {
 
     const numeral = parseFloat(result);
 
-    if (type === "whole") {
-        displayedNumber = Math.round(numeral);
+    if (numeral) {
+        if (type === "whole") {
+            displayedNumber = Math.round(numeral);
+        } else {
+            displayedNumber = `$${millify(numeral, {
+                precision: 1,
+                space: true,
+            }).replace("M", " million")}`;
+        }
     } else {
-        displayedNumber = `$${millify(numeral, {
-            precision: 1,
-            space: true,
-        }).replace("M", " million")}`;
+        displayedNumber = "Error";
     }
 
     return (

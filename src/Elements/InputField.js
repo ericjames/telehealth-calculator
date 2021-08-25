@@ -30,12 +30,17 @@ const InputField = ({ setDataSheets, dataSheet, index }) => {
 
     const maxLength = getMaxLength(field);
 
+    let style = {};
+    if (field.fieldType === "text") {
+        style.flexBasis = 300;
+    }
+
     return (
-        <div className="InputField">
+        <div className="InputField" style={style}>
             <label>{field.name}</label>
             <div className="field">
                 <input type={field.fieldType} min={field.minValue} max={field.maxValue} step={field.stepValue} maxLength={maxLength} value={field.value} onChange={onChange} disabled={field.type === "locked"} />
-                {field.type === "editable" ? <button className="revert" onClick={revertValue}>X</button> : null }
+                {field.type === "editable" ? <button className="revert" onClick={revertValue}>⟳</button> : null}
             </div>
         </div>
     )
@@ -47,7 +52,7 @@ function getMaxLength(field) {
         maxLength = 20;
     } else {
         // All other field types are numbers
-        
+
     }
     return maxLength
 };

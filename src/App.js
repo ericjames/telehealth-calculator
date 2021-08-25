@@ -37,52 +37,63 @@ function App() {
     setDataSheets(dataSheets);
   }
 
-  // Initial setup of google data here, if anything breaks, start here
+  // Merges google data into the config sheet data
+  // @FUTURE possibly move into AppWithData as useEffect if data will constantly change
   async function getNewDataSheet(sheet) {
     const gSheet = doc.sheetsById[sheet.gid];
     const rows = await gSheet.getCellsInRange('A2:R15'); // This will grab everything after first row
 
     const indexOffset = 2; // Because the first row is missing, the offset is higher
 
-    // Separate out data rows, each one serves a different purpose
+    // Critical model change, convert each Row into an Object { columnId: data }
     const columnIds = rows[sheet.columnIds - indexOffset];
-    const titles = rows[sheet.titleRow - indexOffset];
-    const subtitles = rows[sheet.subtitleRow - indexOffset];
-    const helpText = rows[sheet.helpTextRow - indexOffset];
-    const formulas = rows[sheet.formulaRow - indexOffset];
+    const rowsModel = rows.map((row) => {
+      const rowModel = {};
+      row.forEach((value, i) => {
+        rowModel[columnIds[i]] = value;
+      });
+      return rowModel;
+    });
+
+    // console.log(rowsModel);
+
+    // Separate out data rows, each one serves a different purpose
+    const titles = rowsModel[sheet.titleRow - indexOffset];
+    const subtitles = rowsModel[sheet.subtitleRow - indexOffset];
+    const helpText = rowsModel[sheet.helpTextRow - indexOffset];
+    const formulas = rowsModel[sheet.formulaRow - indexOffset];
 
     // const initialValueRows = rows[sheet.initialValueRow - 1];
     // @FUTURE This does ingest all rows after the initial value
-    const initialValueRows = rows.splice(sheet.initialValueRow - indexOffset);
-
-    // console.log(columnIds, initialValueRows);
-
-    // Critical model change, convert each Row into an Object { columnId: data }
-    const rowData = initialValueRows.map((row) => {
-      const newRow = {};
-      row.forEach((value, i) => {
-        newRow[columnIds[i]] = value;
-      });
-      return newRow;
-    });
+    const initialValueRows = rowsModel.splice(sheet.initialValueRow - indexOffset);
 
     // console.log(rowData);
 
+    // Setup final merged sheet
     const newSheet = {
       gid: sheet.gid,
       title: sheet.title,
       fields: sheet.fields,
-      rows: rowData
+      rows: rowsModel
     };
 
     // Set the initial value data to override default sheet config fields
-    // @FUTURE We are just setting the initial row for now, data model 
-    // doesnt account for multiple rows at this time
-    const initialValueRow = rowData[0];
     newSheet.fields.forEach((field) => {
-      if (initialValueRow[field.columnId]) {
-        field.value = initialValueRow[field.columnId].replace(",", "");
+
+      // We just use the FIRST row of the seed data 
+      if (initialValueRows[0][field.columnId]) {
+        field.value = initialValueRows[0][field.columnId].replace(",", ""); // Typically numbers with ,
       }
+
+      // And also the other defaults
+      if (titles[field.columnId]) {
+        field.name = titles[field.columnId];
+      }
+
+      if (subtitles[field.columnId]) {
+        field.subtitle = subtitles[field.columnId];
+      }
+
     });
 
     return newSheet;

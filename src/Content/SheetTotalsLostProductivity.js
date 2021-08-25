@@ -7,27 +7,37 @@ const SheetTotalsLostProductivity = ({ fields }) => {
     return (
         <div className="pure-g">
             <div className="pure-u-1-2">
-                <Result1 fields={fields} /></div>
+                <div className="ResultGroup">
+                    <Result1 fields={fields} />
+                </div>
+            </div>
             <div className="pure-u-1-2">
-                <Result2 fields={fields} /></div>
-
-            <div className="ResultGroup pure-u-1-2">
-                <h4>10 percent recovered productivity on federal minimum wage</h4>
-                <div className="totals">
-                    <Result3 fields={fields} />
-                    <Result5 fields={fields} />
-                    <Result7 fields={fields} />
-                    <Result9 fields={fields} />
+                <div className="ResultGroup">
+                    <Result2 fields={fields} />
                 </div>
             </div>
 
-            <div className="ResultGroup pure-u-1-2">
-                <h4>10 percent recovered productivity on median area wage</h4>
-                <div className="totals">
-                    <Result4 fields={fields} />
-                    <Result6 fields={fields} />
-                    <Result8 fields={fields} />
-                    <Result10 fields={fields} />
+            <div className="pure-u-1-2">
+                <div className="ResultGroup">
+                    <h4>10 percent recovered productivity on federal minimum wage</h4>
+                    <div className="totals">
+                        <Result3 fields={fields} />
+                        <Result5 fields={fields} />
+                        <Result7 fields={fields} />
+                        <Result9 fields={fields} />
+                    </div>
+                </div>
+            </div>
+
+            <div className="pure-u-1-2">
+                <div className="ResultGroup">
+                    <h4>10 percent recovered productivity on median area wage</h4>
+                    <div className="totals">
+                        <Result4 fields={fields} />
+                        <Result6 fields={fields} />
+                        <Result8 fields={fields} />
+                        <Result10 fields={fields} />
+                    </div>
                 </div>
             </div>
         </div>

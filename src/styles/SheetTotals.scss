@@ -11,20 +11,20 @@
     }
 
     .ResultGroup {
-        flex: 0 1 50%;
+        box-shadow: 0 0.5em 1em #ddd;
+        margin: 1em;
+        padding: 1em;
+        border-radius: 1em;
     }
 
     .ResultGroup .totals {
         display: flex;
+        justify-content: space-evenly;
     }
 
     .Result {
-        flex: 0 1 20%;
-        margin: 1em;
-        padding: 0.5em;
+        flex: 0 0 auto;
         display: flex;
-        box-shadow: 0 0.5em 1em #ddd;
-        border-radius: 1em;
         flex-direction: column;
     }
 
@@ -39,6 +39,8 @@
         text-align: right;
         flex: 0 1 25%;
         margin-top: 1em;
-        font-size: 1.25em;
+        font-size: 1.4em;
+        color: #1107c5;
+        font-weight: 500;
     }
 }

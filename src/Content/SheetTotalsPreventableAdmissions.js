@@ -6,7 +6,9 @@ const SheetTotalsPreventableAdmissions = ({ fields }) => {
     return (
         <div className="pure-g">
             <div className="pure-u-1-3">
-                <Result fields={fields} />
+                <div className="ResultGroup">
+                    <Result fields={fields} />
+                </div>
             </div>
             <div className="pure-u-2-3">
                 <div className="ResultGroup">

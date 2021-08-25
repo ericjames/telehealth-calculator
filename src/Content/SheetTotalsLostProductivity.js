@@ -17,10 +17,10 @@ const SheetTotalsLostProductivity = ({ fields }) => {
                 </div>
             </div>
 
-            <div className="pure-u-1-2">
+            <div className="pure-u-1 pure-u-md-1-2">
                 <div className="ResultGroup">
                     <h4>10 percent recovered productivity on federal minimum wage</h4>
-                    <div className="totals">
+                    <div className="ResultTotals">
                         <Result3 fields={fields} />
                         <Result5 fields={fields} />
                         <Result7 fields={fields} />
@@ -29,10 +29,10 @@ const SheetTotalsLostProductivity = ({ fields }) => {
                 </div>
             </div>
 
-            <div className="pure-u-1-2">
+            <div className="pure-u-1 pure-u-md-1-2">
                 <div className="ResultGroup">
                     <h4>10 percent recovered productivity on median area wage</h4>
-                    <div className="totals">
+                    <div className="ResultTotals">
                         <Result4 fields={fields} />
                         <Result6 fields={fields} />
                         <Result8 fields={fields} />

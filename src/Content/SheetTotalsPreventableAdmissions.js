@@ -13,7 +13,7 @@ const SheetTotalsPreventableAdmissions = ({ fields }) => {
             <div className="pure-u-2-3">
                 <div className="ResultGroup">
                     <h4>10 percent savings from preventable admissions</h4>
-                    <div className="totals">
+                    <div className="ResultTotals">
                         <Result2 fields={fields} />
                         <Result3 fields={fields} />
                         <Result4 fields={fields} />

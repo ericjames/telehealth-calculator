@@ -1,14 +1,14 @@
 [
     {
         "fieldType": "text",
-        "header_id": "county",
+        "columnId": "county",
         "name": "County or City",
         "type": "editable",
         "value": ""
     },
     {
         "fieldType": "number",
-        "header_id": "admissions_per_year",
+        "columnId": "admissions_per_year",
         "name": "Admissions per year",
         "type": "editable",
         "value": 0,
@@ -19,7 +19,7 @@
     },
     {
         "fieldType": "number",
-        "header_id": "preventable_admission_rate",
+        "columnId": "preventable_admission_rate",
         "name": "Preventable admission rate",
         "type": "editable",
         "value": 0,
@@ -30,7 +30,7 @@
     },
     {
         "fieldType": "number",
-        "header_id": "average_savings",
+        "columnId": "average_savings",
         "name": "Average savings per preventable admission",
         "type": "locked",
         "value": 0

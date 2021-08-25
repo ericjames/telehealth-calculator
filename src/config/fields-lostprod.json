@@ -1,7 +1,7 @@
 [
     {
         "fieldType": "text",
-        "header_id": "county",
+        "columnId": "county",
         "name": "County or City (for reference only)",
         "type": "editable",
         "value": "",
@@ -10,7 +10,7 @@
     },
     {
         "fieldType": "number",
-        "header_id": "percent_months",
+        "columnId": "percent_months",
         "name": "Percent of working-age population reporting poor health days each month (2020) (a)",
         "type": "editable",
         "value": 0,
@@ -21,51 +21,51 @@
     },
     {
         "fieldType": "number",
-        "header_id": "working_age",
+        "columnId": "working_age",
         "name": "Working age population 16-64 (b)",
         "type": "editable",
         "value": 0,
         "valueType": "number",
         "stepValue": 1,
-        "maxValue": 100,
+        "maxValue": 1000000,
         "minValue": 0
     },
     {
         "fieldType": "number",
-        "header_id": "poor_health",
+        "columnId": "poor_health",
         "name": "Average number of poor health days per month for each reportee (2020) (c)",
         "type": "editable",
         "value": 0,
-        "valueType": "number",
-        "stepValue": 1,
+        "valueType": "decimal",
+        "stepValue": 0.1,
         "maxValue": 31,
         "minValue": 0
     },
     {
         "fieldType": "number",
-        "header_id": "fed_min_wage",
+        "columnId": "fed_min_wage",
         "name": "Federal minimum wage",
         "type": "editable",
         "value": 0,
         "valueType": "price",
-        "stepValue": 1,
+        "stepValue": 0.01,
         "maxValue": 100,
         "minValue": 0
     },
     {
         "fieldType": "number",
-        "header_id": "median_area_wage",
+        "columnId": "median_area_wage",
         "name": "Median area wage (May 2020) (x)",
         "value": 0,
         "type": "editable",
         "valueType": "price",
-        "stepValue": 1,
+        "stepValue": 0.01,
         "maxValue": 100,
         "minValue": 0
     },
     {
         "fieldType": "number",
-        "header_id": "hours_lost_year",
+        "columnId": "hours_lost_year",
         "name": "Hours lost per year for each reported poor health day per month (8 hours*12 months)",
         "type": "hidden",
         "value": 0

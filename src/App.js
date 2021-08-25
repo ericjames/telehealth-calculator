@@ -18,6 +18,7 @@ function App() {
     getGoogleData();
   }, [])
 
+  // Seeds app with google data
   async function getGoogleData() {
     await doc.useServiceAccountAuth({
       client_email: process.env.REACT_APP_GOOGLE_SERVICE_ACCOUNT_EMAIL,
@@ -29,43 +30,63 @@ function App() {
     let dataSheets = [];
 
     for (const sheet of config.sheets) {
-      const gSheet = doc.sheetsById[sheet.gid];
-      const rows = await gSheet.getCellsInRange('A2:R15'); // This will grab everything after first row
-
-      const headerIds = rows[0];
-      const headerNames = rows[1];
-      const dataRows = rows.splice(2);
-
-      const newSheet = { 
-        gid: sheet.gid, 
-        fields: sheet.fields, 
-        title: sheet.title,
-        rows: [] 
-      };
-      dataRows.forEach((row) => {
-        const newRow = {};
-        if (row[0] === "TOTALS")
-          return;
-        row.forEach((value, i) => {
-          newRow[headerIds[i]] = value;
-        });
-        newSheet.rows.push(newRow);
-      });
-
-      // We only ingest the first row of county data to fill in the fields obj
-      const rowPlaceholder = newSheet.rows[0];
-      newSheet.fields.forEach((field) => {
-        if (rowPlaceholder[field.header_id]) {
-          field.value = rowPlaceholder[field.header_id].replace(",", "");
-        }
-      });
-
+      const newSheet = await getNewDataSheet(sheet);
       dataSheets.push(newSheet);
     }
     // console.log(dataSheets);
     setDataSheets(dataSheets);
   }
 
+  // Initial setup of google data here, if anything breaks, start here
+  async function getNewDataSheet(sheet) {
+    const gSheet = doc.sheetsById[sheet.gid];
+    const rows = await gSheet.getCellsInRange('A2:R15'); // This will grab everything after first row
+
+    const indexOffset = 2; // Because the first row is missing, the offset is higher
+
+    // Separate out data rows, each one serves a different purpose
+    const columnIds = rows[sheet.columnIds - indexOffset];
+    const titles = rows[sheet.titleRow - indexOffset];
+    const subtitles = rows[sheet.subtitleRow - indexOffset];
+    const helpText = rows[sheet.helpTextRow - indexOffset];
+    const formulas = rows[sheet.formulaRow - indexOffset];
+
+    // const initialValueRows = rows[sheet.initialValueRow - 1];
+    // @FUTURE This does ingest all rows after the initial value
+    const initialValueRows = rows.splice(sheet.initialValueRow - indexOffset);
+
+    // console.log(columnIds, initialValueRows);
+
+    // Critical model change, convert each Row into an Object { columnId: data }
+    const rowData = initialValueRows.map((row) => {
+      const newRow = {};
+      row.forEach((value, i) => {
+        newRow[columnIds[i]] = value;
+      });
+      return newRow;
+    });
+
+    // console.log(rowData);
+
+    const newSheet = {
+      gid: sheet.gid,
+      title: sheet.title,
+      fields: sheet.fields,
+      rows: rowData
+    };
+
+    // Set the initial value data to override default sheet config fields
+    // @FUTURE We are just setting the initial row for now, data model 
+    // doesnt account for multiple rows at this time
+    const initialValueRow = rowData[0];
+    newSheet.fields.forEach((field) => {
+      if (initialValueRow[field.columnId]) {
+        field.value = initialValueRow[field.columnId].replace(",", "");
+      }
+    });
+
+    return newSheet;
+  }
 
 
 

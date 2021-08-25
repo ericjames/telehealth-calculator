@@ -9,11 +9,12 @@ export default {
 
         // Actual row number in sheet
         columnIds: 2,
-        titleRow: 3,
-        subtitleRow: 4,
-        helpTextRow: 5,
-        formulaRow: 6,
-        initialValueRow: 7,
+        fieldTypes: 3,
+        titleRow: 4,
+        subtitleRow: 5,
+        helpTextRow: 6,
+        formulaRow: 7,
+        initialValueRow: 8,
     }, {
         title: "Preventable Admissions",
         gid: 1029269315,
@@ -21,10 +22,11 @@ export default {
 
         // Actual row number in sheet
         columnIds: 2,
-        titleRow: 3,
-        subtitleRow: 4,
-        helpTextRow: 5,
-        formulaRow: 6,
-        initialValueRow: 7,
+        fieldTypes: 3,
+        titleRow: 4,
+        subtitleRow: 5,
+        helpTextRow: 6,
+        formulaRow: 7,
+        initialValueRow: 8,
     }],
 }

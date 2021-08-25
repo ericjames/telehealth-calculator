@@ -58,6 +58,7 @@ function App() {
     // console.log(rowsModel);
 
     // Separate out data rows, each one serves a different purpose
+    const fieldTypes = rowsModel[sheet.fieldTypeRow - indexOffset];
     const titles = rowsModel[sheet.titleRow - indexOffset];
     const subtitles = rowsModel[sheet.subtitleRow - indexOffset];
     const helpText = rowsModel[sheet.helpTextRow - indexOffset];
@@ -88,6 +89,10 @@ function App() {
       // And also the other defaults
       if (titles[field.columnId]) {
         field.name = titles[field.columnId];
+      }
+
+      if (subtitles[field.columnId]) {
+        field.subtitle = subtitles[field.columnId];
       }
 
       if (subtitles[field.columnId]) {

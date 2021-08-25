@@ -109,8 +109,12 @@ function App() {
   return (
     <div className="App">
 
-      <header className="main-header"><h1>What is the cost of telehealth?</h1>
-        <span>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut</span></header>
+      <header className="main-header">
+        <div className="container">
+          <h1>What is the cost of telehealth?</h1>
+          <span>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut</span>
+        </div>
+      </header>
 
       <AppWithData dataSheets={dataSheets} setDataSheets={setDataSheets} />
 

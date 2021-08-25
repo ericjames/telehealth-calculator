@@ -1,0 +1,44 @@
+.SheetTotals {
+    text-align: center;
+    h3 {
+        border-bottom: 1px solid #ccc;
+    }
+    .SheetTotals-inner {
+        // display: flex;
+        // flex-wrap: wrap;
+        // align-items: stretch;
+        // justify-content: space-evenly;
+    }
+
+    .ResultGroup {
+        flex: 0 1 50%;
+    }
+
+    .ResultGroup .totals {
+        display: flex;
+    }
+
+    .Result {
+        flex: 0 1 20%;
+        margin: 1em;
+        padding: 0.5em;
+        display: flex;
+        box-shadow: 0 0.5em 1em #ddd;
+        border-radius: 1em;
+        flex-direction: column;
+    }
+
+    .Result b {
+        flex: 0 1 75%;
+        font-size: 1.2em;
+        font-weight: 300;
+    }
+
+    .Result .number {
+        display: block;
+        text-align: right;
+        flex: 0 1 25%;
+        margin-top: 1em;
+        font-size: 1.25em;
+    }
+}

@@ -6,8 +6,6 @@ import SheetTotals from './SheetTotals';
 
 const DataSheet = ({ setDataSheets, dataSheet }) => {
 
-    if (!dataSheet || !dataSheet.fields) return null;
-
     // console.log("DataSheet", dataSheet);
     // Example object which has been transformed in App.js 
     // fields: (7)[{ … }, { … }, { … }, { … }, { … }, { … }, { … }]
@@ -17,9 +15,13 @@ const DataSheet = ({ setDataSheets, dataSheet }) => {
 
     return (
         <div className="DataSheet">
-            <h2>{dataSheet.title}</h2>
-            <InputArea dataSheet={dataSheet} setDataSheets={setDataSheets} />
-            <SheetTotals dataSheet={dataSheet} />
+            <h2>{dataSheet.title || "..."}</h2>
+            {dataSheet && dataSheet.fields ?
+                <>
+                    <InputArea dataSheet={dataSheet} setDataSheets={setDataSheets} />
+                    <SheetTotals dataSheet={dataSheet} />
+                </>
+                : null}
         </div>
     )
 };

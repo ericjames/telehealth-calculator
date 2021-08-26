@@ -4,11 +4,9 @@ import { GoogleSpreadsheet } from 'google-spreadsheet';
 
 import AppWithData from './AppWithData.js';
 
-import config from './config';
+import config from './config.js';
 
 const doc = new GoogleSpreadsheet(process.env.REACT_APP_GOOGLE_SHEET_ID);
-
-// console.log(process.env);
 
 function App() {
 
@@ -26,20 +24,20 @@ function App() {
     });
     await doc.loadInfo(); // loads document properties and worksheets
 
-    // Get sheet data as part of array
-    let dataSheets = [];
-
-    for (const sheet of config.sheets) {
-      const newSheet = await getNewDataSheet(sheet);
+    let dataSheets = []
+    for (let i = 0; i < config.seedDataSheets.length; i++) {
+      const seedSheet = config.seedDataSheets[i];
+      const newSheet = await getNewDataSheet(seedSheet, i)
       dataSheets.push(newSheet);
-    }
-    // console.log(dataSheets);
+    };
+
+    // console.log("OK", dataSheets);
     setDataSheets(dataSheets);
   }
 
-  // Merges google data into the config sheet data
+  // Merges google data into the config sheet model
   // @FUTURE possibly move into AppWithData as useEffect if data will constantly change
-  async function getNewDataSheet(sheet) {
+  async function getNewDataSheet(sheet, index) {
     const gSheet = doc.sheetsById[sheet.gid];
     const rows = await gSheet.getCellsInRange('A2:R15'); // This will grab everything after first row
 
@@ -72,6 +70,8 @@ function App() {
 
     // Setup final merged sheet
     const newSheet = {
+      index, // Used for updating this parent state in child components
+      id: sheet.id,
       gid: sheet.gid,
       title: sheet.title,
       fields: sheet.fields,

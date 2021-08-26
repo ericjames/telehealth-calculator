@@ -1,29 +1,30 @@
 import { useState, useEffect } from 'react';
 
 
-const InputField = ({ setDataSheets, dataSheet, index }) => {
+const InputField = ({ setDataSheets, dataSheet, fieldIndex }) => {
 
-    const field = dataSheet.fields[index];
+    const field = dataSheet.fields[fieldIndex];
 
     const [originalValue, setOriginalValue] = useState(field.value);
 
     // console.log("INPUTFIELD", field);
 
-    // useEffect(() => {
-    //     if (!field.value) {
-    //         field.value = 0;
-    //         setDataSheets(fields => [...fields, field]);
-    //     }
-    // }, []);
-
     function onChange(e) {
-        dataSheet.fields[index].value = e.target.value;
-        setDataSheets(dataSheets => [...dataSheets, dataSheet]);
+        dataSheet.fields[fieldIndex].value = e.target.value;
+
+        setDataSheets((state) => {
+            state[dataSheet.index] = dataSheet;
+            return [...state]
+        });
     }
 
     function revertValue() {
-        dataSheet.fields[index].value = originalValue;
-        setDataSheets(dataSheets => [...dataSheets, dataSheet]);
+        dataSheet.fields[fieldIndex].value = originalValue;
+
+        setDataSheets(state => {
+            state[dataSheet.index] = dataSheet;
+            return [...state]
+        });
     }
 
     if (field.type === "hidden") return null; // The data still gets calculated in state 

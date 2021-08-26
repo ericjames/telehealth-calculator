@@ -5,7 +5,7 @@ import InputField from '../Elements/InputField';
 
 const InputArea = ({ dataSheet, setDataSheets }) => (<div className="InputArea">
     {dataSheet.fields.map((field, index) => (
-        <InputField key={index} setDataSheets={setDataSheets} dataSheet={dataSheet} index={index} />
+        <InputField key={index} setDataSheets={setDataSheets} dataSheet={dataSheet} fieldIndex={index} />
     ))}
 </div>)
 

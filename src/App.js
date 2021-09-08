@@ -11,6 +11,7 @@ const doc = new GoogleSpreadsheet(process.env.REACT_APP_GOOGLE_SHEET_ID);
 function App() {
 
   const [dataSheets, setDataSheets] = useState(null);
+  const [text, setText] = useState(null);
 
   useEffect(() => {
     getGoogleData();
@@ -23,50 +24,76 @@ function App() {
       private_key: process.env.REACT_APP_GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
     });
     await doc.loadInfo(); // loads document properties and worksheets
+    addDataSheets();
+    addInfoSheet();
+  }
 
+  async function addInfoSheet() {
+    const sheet = config.setupInfoSheet;
+    const rows = await getGoogleSpreadsheetRows(sheet.gid, sheet.columnIds, sheet.readCellRange);
+    const indexOffset = 1;
+
+    let text = {};
+    rows.forEach((row, i) => {
+      if (i > 1) { // skip id row
+        if (row.type && row.unique_id) {
+          text[row.unique_id] = row.text;
+        }
+      }
+    });
+    // console.log("setText", text);
+
+    setText(text);
+  }
+
+  async function addDataSheets() {
     let dataSheets = []
-    for (let i = 0; i < config.seedDataSheets.length; i++) {
-      const seedSheet = config.seedDataSheets[i];
-      const newSheet = await getNewDataSheet(seedSheet, i)
+    for (let i = 0; i < config.setupDataSheets.length; i++) {
+      const setupSheet = config.setupDataSheets[i];
+      const newSheet = await getNewDataSheet(setupSheet, i)
       dataSheets.push(newSheet);
     };
-
     // console.log("OK", dataSheets);
     setDataSheets(dataSheets);
+  }
+
+  async function getGoogleSpreadsheetRows(gid, columnIds, cellRange) {
+    const gSheet = doc.sheetsById[gid];
+    const gSheetRows = await gSheet.getCellsInRange(cellRange); // This will grab everything after first row
+    // Critical model change, convert each Row into an Object { columnId: data }
+    const cellIds = gSheetRows[columnIds - 1];
+    const rows = gSheetRows.map((row) => {
+      const rowModel = {};
+      row.forEach((value, i) => {
+        rowModel[cellIds[i]] = value;
+      });
+      return rowModel;
+    });
+    return rows;
   }
 
   // Merges google data into the config sheet model
   // @FUTURE possibly move into AppWithData as useEffect if data will constantly change
   async function getNewDataSheet(sheet, index) {
-    const gSheet = doc.sheetsById[sheet.gid];
-    const rows = await gSheet.getCellsInRange('A2:R15'); // This will grab everything after first row
 
-    const indexOffset = 2; // Because the first row is missing, the offset is higher
+    const rows = await getGoogleSpreadsheetRows(sheet.gid, sheet.columnIds, sheet.readCellRange);
 
-    // Critical model change, convert each Row into an Object { columnId: data }
-    const columnIds = rows[sheet.columnIds - indexOffset];
-    const rowsModel = rows.map((row) => {
-      const rowModel = {};
-      row.forEach((value, i) => {
-        rowModel[columnIds[i]] = value;
-      });
-      return rowModel;
-    });
-
-    // console.log(rowsModel);
+    const indexOffset = 1;
 
     // Separate out data rows, each one serves a different purpose
-    const fieldTypes = rowsModel[sheet.fieldTypeRow - indexOffset];
-    const titles = rowsModel[sheet.titleRow - indexOffset];
-    const subtitles = rowsModel[sheet.subtitleRow - indexOffset];
-    const helpText = rowsModel[sheet.helpTextRow - indexOffset];
-    const formulas = rowsModel[sheet.formulaRow - indexOffset];
+    const fieldTypes = rows[sheet.fieldTypeRow - indexOffset];
+    const titles = rows[sheet.titleRow - indexOffset];
+    const subtitles = rows[sheet.subtitleRow - indexOffset];
+    const helpText = rows[sheet.helpTextRow - indexOffset];
+    const formulas = rows[sheet.formulaRow - indexOffset];
 
     // const initialValueRows = rows[sheet.initialValueRow - 1];
     // @FUTURE This does ingest all rows after the initial value
-    const initialValueRows = rowsModel.splice(sheet.initialValueRow - indexOffset);
+    const initialValueRows = rows.splice(sheet.initialValueRow - indexOffset);
 
     // console.log(rowData);
+
+    const fields = sheet.fields;
 
     // Setup final merged sheet
     const newSheet = {
@@ -74,30 +101,29 @@ function App() {
       id: sheet.id,
       gid: sheet.gid,
       title: sheet.title,
-      fields: sheet.fields,
-      rows: rowsModel
+      fields, // This is synonymous with columns of the spreadsheet
     };
 
     // Set the initial value data to override default sheet config fields
     newSheet.fields.forEach((field) => {
-
       // We just use the FIRST row of the seed data 
       if (initialValueRows[0][field.columnId]) {
         field.value = initialValueRows[0][field.columnId].replace(",", ""); // Typically numbers with ,
       }
-
       // And also the other defaults
       if (titles[field.columnId]) {
         field.name = titles[field.columnId];
       }
-
       if (subtitles[field.columnId]) {
         field.subtitle = subtitles[field.columnId];
       }
-
-      if (subtitles[field.columnId]) {
-        field.subtitle = subtitles[field.columnId];
+      if (formulas[field.columnId]) {
+        field.formula = formulas[field.columnId];
       }
+      if (helpText[field.columnId]) {
+        field.helpText = helpText[field.columnId];
+      }
+      field.total = 0; // Totals get calculated in AppWithData.js
 
     });
 
@@ -111,8 +137,8 @@ function App() {
 
       <header className="main-header">
         <div className="container">
-          <h1>What is the cost of telehealth?</h1>
-          <span>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut</span>
+          <h1>{text && text.headerTitle || "..."}</h1>
+          <span>{text && text.headerText || "..."}</span>
         </div>
       </header>
 

@@ -3,13 +3,21 @@ import fieldsPreventableAdmissions from './config/fields-prevad.json';
 
 export default {
 
+    setupInfoSheet: {
+        gid: 709780975,
+        readCellRange: 'A1:R15',
+        columnIds: 2,
+    },
+
     // This essentially represents the State model for the entire App
-    seedDataSheets: [{
+    setupDataSheets: [{
+        gid: 1657140223,
+        readCellRange: 'A1:R15', 
+
         id: "lostprod",
         title: "Lost Productivity",
-        gid: 1657140223,
         fields: fieldsLostProductivity,
-        rows: [],
+        rows: [],// for reference 
 
         // Actual row number in sheet
         columnIds: 2,
@@ -20,11 +28,13 @@ export default {
         formulaRow: 7,
         initialValueRow: 8,
     }, {
+        gid: 1029269315,
+        readCellRange: 'A1:R15', 
+
         id: "prevadm",
         title: "Preventable Admissions",
-        gid: 1029269315,
         fields: fieldsPreventableAdmissions,
-        rows: [],
+        rows: [], // for reference 
 
         // Actual row number in sheet
         columnIds: 2,

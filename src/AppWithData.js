@@ -8,28 +8,33 @@ const AppWithData = ({ dataSheets, setDataSheets }) => {
 
     const [dataSheetsWithTotals, setDataSheetsWithTotals] = useState(null);
 
-    // useEffect(() => {
-    //     // Everytime datasheets is updated, calculate totals
+    useEffect(() => {
+        // Everytime datasheets is updated, calculate totals
 
-    //     if (dataSheets) {
-    //         let sheets = calculateTotals(dataSheets);
+        if (dataSheets) {
+            let sheets = calculateTotals(dataSheets);
 
-    //         console.log("useEffect", sheets);
+            console.log("useEffect", sheets);
 
-    //     }
+            setDataSheetsWithTotals(sheets);
 
-    // }, [dataSheets]);
+        }
+
+    }, [dataSheets]);
 
 
-    function calculateTotals(modifiedSheets) {
-        return modifiedSheets;
+    function calculateTotals(sheets) {
+        return sheets.map((sheet) => {
+            console.log("SHEET", sheet);
+            return sheet;
+        })
     }
 
     function onChange() {
 
     }
 
-    console.log("DATA", dataSheets);
+    // console.log("DATA", dataSheets);
 
     return (
         <div className="AppWithData">
@@ -38,7 +43,7 @@ const AppWithData = ({ dataSheets, setDataSheets }) => {
                 <DataSheet key={sheet.id} dataSheet={sheet} setDataSheets={setDataSheets} />
             ))}
 
-            <TotalsBanner dataSheets={dataSheets} />
+            <TotalsBanner dataSheets={dataSheetsWithTotals} />
 
         </div>
 

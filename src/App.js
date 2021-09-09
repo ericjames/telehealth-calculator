@@ -12,6 +12,11 @@ function App() {
 
   const [dataSheets, setDataSheets] = useState(null);
   const [text, setText] = useState(null);
+  const [pages, setPages] = useState({
+    front: true,
+    about: false,
+    sources: false,
+  });
 
   useEffect(() => {
     getGoogleData();
@@ -130,7 +135,14 @@ function App() {
     return newSheet;
   }
 
-
+  function setPage(targetPage) {
+    const newPages = { ...pages };
+    for (let page in newPages) {
+      newPages[page] = false;
+    }
+    newPages[targetPage] = true;
+    setPages(newPages);
+  }
 
   return (
     <div className="App">
@@ -142,7 +154,31 @@ function App() {
         </div>
       </header>
 
-      <AppWithData dataSheets={dataSheets} setDataSheets={setDataSheets} />
+      <nav className="navigation">
+        <button onClick={() => setPage('front')}>Home</button>
+        <button onClick={() => setPage('about')}>About</button>
+        <button onClick={() => setPage('sources')}>Sources</button>
+      </nav>
+
+
+      <div className="Front" style={{ opacity: pages.front ? 1 : 0.2 }}>
+        <AppWithData text={text} dataSheets={dataSheets} setDataSheets={setDataSheets} />
+      </div>
+
+      <div className="Overlay About" style={{ opacity: pages.about ? 1 : 0 }}>
+        <div className="container">
+          <h1>{text && text.aboutTitle}</h1>
+          <p>{text && text.aboutText}</p>
+        </div>
+      </div>
+
+      <div className="Overlay Sources" style={{ opacity: pages.sources ? 1 : 0 }}>
+        <div className="container">
+          <h1>{text && text.sourcesTitle}</h1>
+          <p>{text && text.sourcesText}</p>
+        </div>
+
+      </div>
 
     </div>
   );

@@ -7,16 +7,42 @@
     padding-bottom: 250px;
 }
 
+.navigation {
+    text-align: center;
+    background: #3157a8;
+
+    button {
+        padding: 0.5em 1em 0.5em 1em;
+        font: inherit;
+        font-size: 1.2em;
+        font-weight: 600;
+        cursor: pointer;
+        border: none;
+        color: #eee;
+        background: none;
+        min-width: 200px;
+        transition: ease-in background-color 250ms;
+        &:hover {
+            color: #fff;
+            background: #203b73;
+
+        }
+    }
+}
+
 .main-header {
     text-align: center;
     padding: 3em 0 3em 0;
-    background: #3c53ff;
+    background: #3c6dd6;
     color: #fff;
     display: block;
     .container {
         margin: auto;
         max-width: 1000px;
         width: 86%;
+    }
+    h1 {
+        color: #fff;
     }
 }
 

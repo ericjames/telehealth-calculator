@@ -8,7 +8,7 @@ const InputField = ({ setDataSheets, dataSheet, fieldIndex }) => {
     const [originalValue, setOriginalValue] = useState(field.value);
 
     // Only show certain fields. The data still gets calculated in state 
-    if (field.type === "hidden" || field.type === "total") return null;
+    if (field.type === "hidden" || field.type.includes("total")) return null;
 
     // console.log("INPUTFIELD", field);
 

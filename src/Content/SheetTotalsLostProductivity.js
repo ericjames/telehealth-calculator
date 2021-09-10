@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 
-import DisplayedNumber from '../Elements/DisplayedNumber';
 import Result from '../Elements/Result';
 
 const SheetTotalsLostProductivity = ({ fields }) => {

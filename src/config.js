@@ -12,7 +12,7 @@ export default {
     // This essentially represents the State model for the entire App
     setupDataSheets: [{
         gid: 1657140223,
-        readCellRange: 'A1:R15', 
+        readCellRange: 'A1:R15',
 
         id: "lostprod",
         title: "Lost Productivity",
@@ -21,7 +21,7 @@ export default {
 
         // Actual row number in sheet
         columnIds: 2,
-        fieldTypes: 3,
+        fieldTypeRow: 3,
         titleRow: 4,
         subtitleRow: 5,
         helpTextRow: 6,
@@ -29,7 +29,7 @@ export default {
         initialValueRow: 8,
     }, {
         gid: 1029269315,
-        readCellRange: 'A1:R15', 
+        readCellRange: 'A1:R15',
 
         id: "prevadm",
         title: "Preventable Admissions",
@@ -38,7 +38,7 @@ export default {
 
         // Actual row number in sheet
         columnIds: 2,
-        fieldTypes: 3,
+        fieldTypeRow: 3,
         titleRow: 4,
         subtitleRow: 5,
         helpTextRow: 6,

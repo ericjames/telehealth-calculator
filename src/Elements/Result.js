@@ -4,15 +4,11 @@ const Result = ({ field }) => {
     // console.log(field);
     if (!field) return null;
 
-    const title = field.name;
-    const subtitle = field.subtitle;
-    const result = field.total;
-
     return (
         <div className="Result">
-            {!subtitle ? <h4>{title}</h4> : null}
-            {subtitle ? <h5>{subtitle}</h5> : null}
-            <DisplayedNumber result={result} />
+            {!field.subtitle ? <h4>{field.name}</h4> : null}
+            {field.subtitle ? <h5>{field.subtitle}</h5> : null}
+            <DisplayedNumber valueType={field.valueType} value={field.total} />
         </div>
     );
 }

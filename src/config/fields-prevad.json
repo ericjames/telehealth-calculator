@@ -34,5 +34,35 @@
         "name": "Average savings per preventable admission",
         "type": "locked",
         "value": 0
+    },
+    {
+        "columnId": "prev_adm_per_year",
+        "name": "",
+        "type": "total",
+        "valueType": "number"
+    },
+    {
+        "columnId": "10_pct_savings_1year",
+        "name": "",
+        "type": "total",
+        "valueType": "dollar"
+    },
+    {
+        "columnId": "10_pct_savings_5year",
+        "name": "",
+        "type": "total",
+        "valueType": "dollar"
+    },
+    {
+        "columnId": "10_pct_savings_10year",
+        "name": "",
+        "type": "total",
+        "valueType": "dollar"
+    },
+    {
+        "columnId": "10_pct_savings_20year",
+        "name": "",
+        "type": "total",
+        "valueType": "dollar"
     }
 ]

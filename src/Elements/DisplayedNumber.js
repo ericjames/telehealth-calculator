@@ -1,14 +1,14 @@
 import NumberFormat from "react-number-format";
 import millify from "millify";
 
-const DisplayedNumber = ({ result, type }) => {
+const DisplayedNumber = ({ value, valueType }) => {
 
     let displayedNumber = '--';
 
-    const numeral = parseFloat(result);
+    const numeral = parseFloat(value);
 
     if (numeral) {
-        if (type === "whole") {
+        if (valueType && valueType === "number") {
             displayedNumber = Math.round(numeral);
         } else {
             displayedNumber = `$${millify(numeral, {

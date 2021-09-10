@@ -4,7 +4,7 @@ import DataSheet from './Content/DataSheet.js';
 import TotalsBanner from './Footer/TotalsBanner.js';
 
 
-const AppWithData = ({ dataSheets, setDataSheets }) => {
+const AppWithData = ({ text, dataSheets, setDataSheets }) => {
 
     const [dataSheetsWithTotals, setDataSheetsWithTotals] = useState(null);
 
@@ -12,6 +12,7 @@ const AppWithData = ({ dataSheets, setDataSheets }) => {
         // Everytime datasheets is updated, calculate totals
         if (dataSheets) {
             let sheets = calculateTotals(dataSheets);
+            console.log("calculateTotals");
             setDataSheetsWithTotals(sheets);
         }
     }, [dataSheets]);
@@ -34,7 +35,7 @@ const AppWithData = ({ dataSheets, setDataSheets }) => {
             let convertedValue = part.trim();
             for (let field of fields) {
                 if (field.columnId === convertedValue) {
-                    convertedValue = field.value;
+                    convertedValue = parseFloat(field.value);
                     break;
                 }
             }
@@ -64,7 +65,7 @@ const AppWithData = ({ dataSheets, setDataSheets }) => {
                 <DataSheet key={sheet.id} dataSheet={sheet} setDataSheets={setDataSheets} />
             ))}
 
-            <TotalsBanner dataSheets={dataSheetsWithTotals} />
+            <TotalsBanner text={text} dataSheets={dataSheetsWithTotals} />
 
         </div>
 

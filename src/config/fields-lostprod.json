@@ -81,26 +81,6 @@
         "type": "total"
     },
     {
-        "columnId": "recov_prod_1year_median",
-        "name": "",
-        "type": "total"
-    },
-    {
-        "columnId": "recov_prod_5year_median",
-        "name": "",
-        "type": "total"
-    },
-    {
-        "columnId": "recov_prod_10year_median",
-        "name": "",
-        "type": "total"
-    },
-    {
-        "columnId": "recov_prod_20year_median",
-        "name": "",
-        "type": "total"
-    },
-    {
         "columnId": "recov_prod_1year_min_wage",
         "name": "",
         "type": "total"
@@ -119,5 +99,25 @@
         "columnId": "recov_prod_20year_min_wage",
         "name": "",
         "type": "total"
+    },
+    {
+        "columnId": "recov_prod_1year_median",
+        "name": "",
+        "type": "total_high"
+    },
+    {
+        "columnId": "recov_prod_5year_median",
+        "name": "",
+        "type": "total_high"
+    },
+    {
+        "columnId": "recov_prod_10year_median",
+        "name": "",
+        "type": "total_high"
+    },
+    {
+        "columnId": "recov_prod_20year_median",
+        "name": "",
+        "type": "total_high"
     }
 ]

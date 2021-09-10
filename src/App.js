@@ -86,7 +86,7 @@ function App() {
     const indexOffset = 1;
 
     // Separate out data rows, each one serves a different purpose
-    const fieldTypes = rows[sheet.fieldTypeRow - indexOffset];
+    const fieldTypeRow = rows[sheet.fieldTypeRow - indexOffset];
     const titles = rows[sheet.titleRow - indexOffset];
     const subtitles = rows[sheet.subtitleRow - indexOffset];
     const helpText = rows[sheet.helpTextRow - indexOffset];
@@ -95,6 +95,7 @@ function App() {
     // const initialValueRows = rows[sheet.initialValueRow - 1];
     // @FUTURE This does ingest all rows after the initial value
     const initialValueRows = rows.splice(sheet.initialValueRow - indexOffset);
+    // console.log("ROWS", rows);
 
     // console.log(rowData);
 
@@ -127,6 +128,9 @@ function App() {
       }
       if (helpText[field.columnId]) {
         field.helpText = helpText[field.columnId];
+      }
+      if (fieldTypeRow && fieldTypeRow[field.columnId]) {
+        field.type = fieldTypeRow[field.columnId];
       }
       field.total = 0; // Totals get calculated in AppWithData.js
 

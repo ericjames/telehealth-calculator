@@ -1,7 +1,7 @@
 
 
 const TotalsBanner = ({ dataSheets }) => {
-    console.log(dataSheets);
+    console.log("TOTALS", dataSheets);
 
     return (
         <div className="TotalsBanner">

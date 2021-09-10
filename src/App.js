@@ -165,14 +165,14 @@ function App() {
         <AppWithData text={text} dataSheets={dataSheets} setDataSheets={setDataSheets} />
       </div>
 
-      <div className="Overlay About" style={{ opacity: pages.about ? 1 : 0 }}>
+      <div className="Overlay About" style={{ opacity: pages.about ? 1 : 0, display: pages.about ? 'block' : 'none' }}>
         <div className="container">
           <h1>{text && text.aboutTitle}</h1>
           <p>{text && text.aboutText}</p>
         </div>
       </div>
 
-      <div className="Overlay Sources" style={{ opacity: pages.sources ? 1 : 0 }}>
+      <div className="Overlay Sources" style={{ opacity: pages.sources ? 1 : 0, display: pages.sources ? 'block' : 'none' }}>
         <div className="container">
           <h1>{text && text.sourcesTitle}</h1>
           <p>{text && text.sourcesText}</p>

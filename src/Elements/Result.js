@@ -1,19 +1,19 @@
-// import { useState, useEffect } from 'react';
+import DisplayedNumber from './DisplayedNumber';
 
-// import NumberFormat from 'react-number-format';
+const Result = ({ field }) => {
+    // console.log(field);
+    if (!field) return null;
 
-// const Result = ({ text, number }) => {
+    const title = field.name;
+    const subtitle = field.subtitle;
+    const result = field.total;
 
-//     return (
-//         <div className="Result">
-//             <div className="text">{text}</div>
-//             <DisplayedNumber result={number} />
-//         </div>
-//     )
-// };
-
-// const DisplayedNumber = ({ result }) => <div className="number">
-// <NumberFormat value={result} displayType={'text'} thousandSeparator={true} prefix={'$'} decimalScale={0} />
-// </div>;
-
-// export default Result
+    return (
+        <div className="Result">
+            {!subtitle ? <h4>{title}</h4> : null}
+            {subtitle ? <h5>{subtitle}</h5> : null}
+            <DisplayedNumber result={result} />
+        </div>
+    );
+}
+export default Result;

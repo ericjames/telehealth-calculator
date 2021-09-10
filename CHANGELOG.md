@@ -23,7 +23,6 @@
 
 * Preventable admissions County or City or name of Hospital
 
-
 -----
 
 * Total Bottom Banner fixed

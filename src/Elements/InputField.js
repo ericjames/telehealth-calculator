@@ -7,6 +7,9 @@ const InputField = ({ setDataSheets, dataSheet, fieldIndex }) => {
 
     const [originalValue, setOriginalValue] = useState(field.value);
 
+    // Only show certain fields. The data still gets calculated in state 
+    if (field.type === "hidden" || field.type === "total") return null;
+
     // console.log("INPUTFIELD", field);
 
     function onChange(e) {
@@ -26,8 +29,6 @@ const InputField = ({ setDataSheets, dataSheet, fieldIndex }) => {
             return [...state]
         });
     }
-
-    if (field.type === "hidden") return null; // The data still gets calculated in state 
 
     const maxLength = getMaxLength(field);
 

@@ -1,5 +1,6 @@
 import SheetTotalsLostProductivity from './SheetTotalsLostProductivity'
 import SheetTotalsPreventableAdmissions from './SheetTotalsPreventableAdmissions'
+import SheetTotalsAvoidable from './SheetTotalsAvoidable';
 
 const SheetTotals = ({ dataSheet }) => {
 
@@ -8,6 +9,8 @@ const SheetTotals = ({ dataSheet }) => {
         comp = <SheetTotalsLostProductivity fields={dataSheet.fields} />;
     } else if (dataSheet.gid === 1029269315) {
         comp = <SheetTotalsPreventableAdmissions fields={dataSheet.fields} />;
+    } else if (dataSheet.gid === 1631211154) {
+        comp = <SheetTotalsAvoidable fields={dataSheet.fields} />;
     }
 
     return (

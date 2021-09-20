@@ -35,38 +35,62 @@ function App() {
 
   async function addInfoSheet() {
     const sheet = config.setupInfoSheet;
-    const rows = await getGoogleSpreadsheetRows(sheet.gid, sheet.columnIds, sheet.readCellRange);
+
+    let newSheet = null;
+
+    const rows = await getGoogleSpreadsheetRows(sheet.gid, sheet.rowIndexOfColumnIds, sheet.readCellRange);
     const indexOffset = 1;
 
-    let text = {};
+    newSheet = {};
     rows.forEach((row, i) => {
       if (i > 1) { // skip id row
         if (row.type && row.unique_id) {
-          text[row.unique_id] = row.text;
+          newSheet[row.unique_id] = row.text;
         }
       }
     });
-    // console.log("setText", text);
+    // console.log("setText", newSheet);
+    localStorage.setItem(sheet.gid, JSON.stringify(newSheet));
 
-    setText(text);
+    // if (!localStorage.getItem(sheet.gid)) {
+
+    // } else {
+    //   newSheet = JSON.parse(localStorage.getItem(sheet.gid));
+    // }
+
+    setText(newSheet);
   }
 
   async function addDataSheets() {
     let dataSheets = []
     for (let i = 0; i < config.setupDataSheets.length; i++) {
       const setupSheet = config.setupDataSheets[i];
-      const newSheet = await getNewDataSheet(setupSheet, i)
+
+      let newSheet = null;
+
+      newSheet = await getNewDataSheet(setupSheet, i)
+      localStorage.setItem(setupSheet.gid, JSON.stringify(newSheet));
+
+      // if (!localStorage.getItem(setupSheet.gid)) {
+      //   console.log("Get New Sheet");
+      //   newSheet = await getNewDataSheet(setupSheet, i)
+      //   localStorage.setItem(setupSheet.gid, JSON.stringify(newSheet));
+      // } else {
+      //   console.log("OLD Sheet");
+      //   newSheet = JSON.parse(localStorage.getItem(setupSheet.gid));
+      // }
+
       dataSheets.push(newSheet);
     };
     // console.log("OK", dataSheets);
     setDataSheets(dataSheets);
   }
 
-  async function getGoogleSpreadsheetRows(gid, columnIds, cellRange) {
+  async function getGoogleSpreadsheetRows(gid, rowIndexOfColumnIds, cellRange) {
     const gSheet = doc.sheetsById[gid];
     const gSheetRows = await gSheet.getCellsInRange(cellRange); // This will grab everything after first row
     // Critical model change, convert each Row into an Object { columnId: data }
-    const cellIds = gSheetRows[columnIds - 1];
+    const cellIds = gSheetRows[rowIndexOfColumnIds - 1];
     const rows = gSheetRows.map((row) => {
       const rowModel = {};
       row.forEach((value, i) => {
@@ -77,11 +101,38 @@ function App() {
     return rows;
   }
 
+  async function getGoogleSpreadsheetColumns(gid, rowIndexOfColumnIds, cellRange) {
+    const gSheet = doc.sheetsById[gid];
+    const gSheetRows = await gSheet.getCellsInRange(cellRange); // This will grab everything after first row
+
+    // console.log(gSheetRows); return;
+
+    const columnIds = gSheetRows[rowIndexOfColumnIds - 1];
+
+    const columns = columnIds.map((id) => {
+      return { columnId: id };
+    });
+
+    const rowIdIndex = 0;
+    gSheetRows.forEach((row, i) => {
+      const rowId = row[rowIdIndex];
+      if (!rowId) return;
+      row.forEach((cellValue, rowIndex) => {
+        if (rowIndex > rowIdIndex) {
+          columns[rowIndex][rowId] = cellValue;
+        }
+      })
+    });
+
+    console.log("COLUMNS", columns);
+    return columns;
+  }
+
   // Merges google data into the config sheet model
   // @FUTURE possibly move into AppWithData as useEffect if data will constantly change
   async function getNewDataSheet(sheet, index) {
 
-    const rows = await getGoogleSpreadsheetRows(sheet.gid, sheet.columnIds, sheet.readCellRange);
+    const rows = await getGoogleSpreadsheetRows(sheet.gid, sheet.rowIndexOfColumnIds, sheet.readCellRange);
 
     const indexOffset = 1;
 
@@ -99,6 +150,7 @@ function App() {
 
     // console.log(rowData);
 
+    // Merge overwrite 
     const fields = sheet.fields;
 
     // Setup final merged sheet
@@ -136,6 +188,8 @@ function App() {
 
     });
 
+    console.log("New Sheet", newSheet);
+
     return newSheet;
   }
 
@@ -166,6 +220,9 @@ function App() {
 
 
       <div className="Front" style={{ opacity: pages.front ? 1 : 0.2 }}>
+
+        {!dataSheets ? <div className="Loading">Loading...</div> : null}
+
         <AppWithData text={text} dataSheets={dataSheets} setDataSheets={setDataSheets} />
       </div>
 

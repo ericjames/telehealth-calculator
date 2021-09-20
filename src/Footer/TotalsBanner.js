@@ -12,10 +12,10 @@ const TotalsBanner = ({ dataSheets, text }) => {
         highBoundValues[i] = [];
         sheet.fields.forEach((field) => {
             console.log("field.type", field.type);
-            if (field.type === 'total_low') {
+            if (field.type === 'total_low' || field.type === 'total_both') {
                 lowBoundValues[i].push(field.total);
             }
-            if (field.type === 'total_high') {
+            if (field.type === 'total_high' || field.type === 'total_both') {
                 highBoundValues[i].push(field.total);
             }
         });
@@ -54,7 +54,7 @@ const TotalsBanner = ({ dataSheets, text }) => {
 
                         <h3>Low</h3>
                         {lowBoundTotals.map((total, i) => (
-                            <div className="pure-u-1-4">
+                            <div key={i} className="pure-u-1-4">
                                 <DisplayedNumber key={i} value={total} valueType="dollar" />
                             </div>
                         ))}
@@ -63,7 +63,7 @@ const TotalsBanner = ({ dataSheets, text }) => {
 
                         <h3>High</h3>
                         {highBoundTotals.map((total, i) => (
-                            <div className="pure-u-1-4">
+                            <div key={i} className="pure-u-1-4">
                                 <DisplayedNumber key={i} value={total} valueType="dollar" />
                             </div>
                         ))}

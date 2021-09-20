@@ -1,4 +1,4 @@
-import NumberFormat from "react-number-format";
+// import NumberFormat from "react-number-format";
 import millify from "millify";
 
 const DisplayedNumber = ({ value, valueType }) => {

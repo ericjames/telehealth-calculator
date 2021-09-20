@@ -1,6 +1,22 @@
 .App {
 }
 
+.Loading {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    background: #3c6dd6;
+    color: #fff;
+    position: absolute;
+    font-size: 1.5em;
+    top: 0;
+    left: 0;
+    opacity: 0.9;
+}
+
 .AppWithData {
     max-width: 1400px;
     margin: auto;
@@ -25,7 +41,6 @@
         &:hover {
             color: #fff;
             background: #203b73;
-
         }
     }
 }

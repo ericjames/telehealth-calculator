@@ -13,10 +13,7 @@
     }
 
     .ResultGroup {
-        box-shadow: 0 0.5em 1em #ddd;
-        margin: 1em;
-        padding: 1em;
-        border-radius: 1em;
+        margin-bottom: 1em;
 
         .ResultTotals {
             display: flex;
@@ -43,9 +40,8 @@
             .number {
                 display: block;
                 flex: 0 1 25%;
-                margin-top: 1em;
                 font-size: 1.3em;
-                color: #1107c5;
+                color: #2562db;
                 font-weight: 500;
             }
         }

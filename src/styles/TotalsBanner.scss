@@ -6,26 +6,50 @@
     width: 100%;
     height: auto;
     text-align: center;
-
+    color: #6aa8ff;
+    h2 {
+        color: #fff;
+        margin: 0 0 0.5em 0;
+    }
     h3 {
-        border-bottom: 1px solid #aaa;
         text-align: center;
         width: 95%;
-        margin: 0 auto 1em auto;
+        margin: 0 auto 0 auto;
+        color: #6aa8ff;
     }
     .container {
-        background: #fff;
+        background: #185bbd;
+        color: #6aa8ff;
         box-shadow: 0 1em 3em #aaa;
         border-radius: 2em;
-        max-width: 1400px;
-        margin: auto 1em 0 1em;
-        padding: 0.5em 2em 1em 2em;
+        max-width: 1350px;
+        margin: auto;
+        padding: 1em 2em 2em 2em;
     }
 
-    .number {
-        color: #2562db;
-        font-size: 1.5em;
-        font-weight: 400;
-        text-align: center;
+    .total-set {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        h3 {
+            text-align: center;
+            flex: 0 0 3em;
+            color: #6aa8ff;
+        }
+        .value {
+            flex: 0 1 100%;
+            border-right: 1px solid #0c4492;
+            padding-right: 0.5em;
+            padding-left: 0.5em;
+            &:last-child {
+                border: none;
+            }
+            .number {
+                color: #fff;
+                font-size: 1.5em;
+                font-weight: 400;
+                text-align: center;
+            }
+        }
     }
 }

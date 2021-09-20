@@ -1,4 +1,5 @@
 .App {
+    background: #C7D0E2;
 }
 
 .Loading {
@@ -8,7 +9,7 @@
     display: flex;
     height: 100%;
     width: 100%;
-    background: #3c6dd6;
+    background: #2d79e6;
     color: #fff;
     position: absolute;
     font-size: 1.5em;
@@ -21,11 +22,13 @@
     max-width: 1400px;
     margin: auto;
     padding-bottom: 250px;
+    // background: #E2ccF5;
+    border-radius: 1em;
 }
 
 .navigation {
     text-align: center;
-    background: #3157a8;
+    background:#0C4492;
 
     button {
         padding: 0.5em 1em 0.5em 1em;
@@ -48,8 +51,9 @@
 .main-header {
     text-align: center;
     padding: 3em 0 3em 0;
-    background: #3c6dd6;
     color: #fff;
+    background: rgb(5, 52, 118);
+    background: linear-gradient(130deg, rgba(45, 121, 230, 1) 0%, rgba(5, 52, 118, 1) 100%);
     display: block;
     .container {
         margin: auto;
@@ -64,7 +68,10 @@
 .DataSheet {
     margin: 1em 1em 3em 1em;
     padding: 0.5em 2em;
-    border-left: 2px solid #2562db;
+    border-radius: 1em;
+    background: rgb(248, 251, 255);
+    background: linear-gradient(280deg, rgba(248, 251, 255, 1) 0%, rgba(226, 233, 245, 1) 100%);
+
 }
 
 .InputArea {

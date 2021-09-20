@@ -14,7 +14,7 @@ const DisplayedNumber = ({ value, valueType }) => {
             displayedNumber = `$${millify(numeral, {
                 precision: 1,
                 space: true,
-            }).replace("M", " million")}`;
+            }).replace("M", " M")}`;
         }
     } else {
         displayedNumber = "---";

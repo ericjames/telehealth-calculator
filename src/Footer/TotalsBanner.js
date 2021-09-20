@@ -5,40 +5,42 @@ const TotalsBanner = ({ dataSheets, text }) => {
 
     if (!dataSheets) return null;
 
-    let lowBoundValues = [];
-    let highBoundValues = [];
+    let lowBoundFieldSets = [];
+    let highBoundFieldSets = [];
     dataSheets.forEach((sheet, i) => {
-        lowBoundValues[i] = [];
-        highBoundValues[i] = [];
+        lowBoundFieldSets[i] = [];
+        highBoundFieldSets[i] = [];
         sheet.fields.forEach((field) => {
             // console.log("field.type", field.type);
             if (field.type === 'total_low' || field.type === 'total_both') {
-                lowBoundValues[i].push(field.value);
+                lowBoundFieldSets[i].push(field);
             }
             if (field.type === 'total_high' || field.type === 'total_both') {
-                highBoundValues[i].push(field.value);
+                highBoundFieldSets[i].push(field);
             }
         });
     })
-    // console.log(lowBoundValues, highBoundValues);
+    // console.log(lowBoundFieldSets, highBoundFieldSets);
 
     let lowBoundTotals = [];
     let highBoundTotals = [];
-    lowBoundValues.forEach((sheetValues) => {
-        sheetValues.forEach((value, i) => {
+    lowBoundFieldSets.forEach((fieldset) => {
+        fieldset.forEach((field, i) => {
             if (lowBoundTotals[i]) {
-                lowBoundTotals[i] += parseFloat(value);
+                lowBoundTotals[i].value += parseFloat(field.value);
             } else {
-                lowBoundTotals[i] = parseFloat(value);
+                lowBoundTotals[i] = { subtitle: field.subtitle };
+                lowBoundTotals[i].value = parseFloat(field.value);
             }
         });
     });
-    highBoundValues.forEach((sheetValues) => {
-        sheetValues.forEach((value, i) => {
+    highBoundFieldSets.forEach((fieldset) => {
+        fieldset.forEach((field, i) => {
             if (highBoundTotals[i]) {
-                highBoundTotals[i] += parseFloat(value);
+                highBoundTotals[i].value += parseFloat(field.value);
             } else {
-                highBoundTotals[i] = parseFloat(value);
+                highBoundTotals[i] = { subtitle: field.subtitle };
+                highBoundTotals[i].value = parseFloat(field.value);
             }
         });
     })
@@ -50,21 +52,25 @@ const TotalsBanner = ({ dataSheets, text }) => {
                 <header><h2>{text && text.bannerTitle}</h2></header>
 
                 <div className="pure-g">
-                    <div className="pure-u-1-2">
+                    <div className="pure-u-1-2 total-set">
 
                         <h3>Low</h3>
+
                         {lowBoundTotals.map((total, i) => (
-                            <div key={i} className="pure-u-1-4">
-                                <DisplayedNumber key={i} value={total} valueType="dollar" />
+                            <div key={i} className="value">
+                                {total.subtitle}
+                                <DisplayedNumber key={i} value={total.value} valueType="dollar" />
                             </div>
                         ))}
                     </div>
-                    <div className="pure-u-1-2">
+                    <div className="pure-u-1-2 total-set">
 
                         <h3>High</h3>
+
                         {highBoundTotals.map((total, i) => (
-                            <div key={i} className="pure-u-1-4">
-                                <DisplayedNumber key={i} value={total} valueType="dollar" />
+                            <div key={i} className="value">
+                                {total.subtitle}
+                                <DisplayedNumber key={i} value={total.value} valueType="dollar" />
                             </div>
                         ))}
                     </div>

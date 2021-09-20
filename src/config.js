@@ -62,5 +62,6 @@ export default {
         helpTextRow: 6,
         formulaRow: 7,
         initialValueRow: 8,
-    }, ]
+    },
+    ]
 }

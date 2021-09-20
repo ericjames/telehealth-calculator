@@ -8,7 +8,7 @@ const Result = ({ field }) => {
         <div className="Result">
             {!field.subtitle ? <h4>{field.name}</h4> : null}
             {field.subtitle ? <h5>{field.subtitle}</h5> : null}
-            <DisplayedNumber valueType={field.valueType} value={field.total} />
+            <DisplayedNumber valueType={field.valueType} value={field.value} />
         </div>
     );
 }

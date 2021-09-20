@@ -124,7 +124,6 @@ function App() {
       })
     });
 
-    console.log("COLUMNS", columns);
     return columns;
   }
 
@@ -184,11 +183,10 @@ function App() {
       if (fieldTypeRow && fieldTypeRow[field.columnId]) {
         field.type = fieldTypeRow[field.columnId];
       }
-      field.total = 0; // Totals get calculated in AppWithData.js
 
     });
 
-    console.log("New Sheet", newSheet);
+    // console.log("New Sheet", newSheet);
 
     return newSheet;
   }

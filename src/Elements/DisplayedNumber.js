@@ -17,7 +17,7 @@ const DisplayedNumber = ({ value, valueType }) => {
             }).replace("M", " million")}`;
         }
     } else {
-        displayedNumber = "Error";
+        displayedNumber = "---";
     }
 
     return (

@@ -1,7 +1,7 @@
 import Result from '../Elements/Result';
 
 const SheetTotalsAvoidable = ({ fields }) => {
-    console.log("SheetTotalsAvoidable", fields);
+    // console.log("SheetTotalsAvoidable", fields);
     if (!fields) return null;
     return (
         <div className="pure-g">
@@ -10,6 +10,7 @@ const SheetTotalsAvoidable = ({ fields }) => {
                     <Result field={fields[7]} />
                     <Result field={fields[8]} />
                     <Result field={fields[9]} />
+                    <Result field={fields[10]} />
                 </div>
             </div>
             <div className="pure-u-2-3">

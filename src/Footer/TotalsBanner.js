@@ -11,12 +11,12 @@ const TotalsBanner = ({ dataSheets, text }) => {
         lowBoundValues[i] = [];
         highBoundValues[i] = [];
         sheet.fields.forEach((field) => {
-            console.log("field.type", field.type);
+            // console.log("field.type", field.type);
             if (field.type === 'total_low' || field.type === 'total_both') {
-                lowBoundValues[i].push(field.total);
+                lowBoundValues[i].push(field.value);
             }
             if (field.type === 'total_high' || field.type === 'total_both') {
-                highBoundValues[i].push(field.total);
+                highBoundValues[i].push(field.value);
             }
         });
     })

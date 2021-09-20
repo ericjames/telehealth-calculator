@@ -21,14 +21,14 @@ const AppWithData = ({ text, dataSheets, setDataSheets }) => {
         return sheets.map((sheet) => {
             sheet.fields.forEach((field) => {
                 if (field && field.formula && field.formula !== 'null') {
-                    field.total = getFieldTotal(sheet.fields, field);
+                    field.value = getFieldTotalValue(sheet.fields, field);
                 }
             })
             return sheet;
         })
     }
 
-    function getFieldTotal(fields, field) {
+    function getFieldTotalValue(fields, field) {
         const parts = field.formula.split("*");
         const values = parts.map((part) => {
             // Part of formula is either columnId ref or just a number
@@ -42,14 +42,14 @@ const AppWithData = ({ text, dataSheets, setDataSheets }) => {
             return convertedValue;
         });
 
-        let total = null;
+        let totalValue = null;
         try {
-            total = values.reduce((a, b) => a * parseFloat(b), 1);
+            totalValue = values.reduce((a, b) => a * parseFloat(b), 1);
         } catch (e) {
             console.error(e);
         }
-        // console.log(total, values);
-        return total;
+        // console.log(totalValue, values);
+        return totalValue;
     }
 
     function onChange() {

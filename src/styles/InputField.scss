@@ -11,7 +11,7 @@
 
     input {
         flex: 0 1 auto;
-        font-size: 1.3em;
+        font-size: 1.1em;
         padding: 0.7em 0.5em;
         margin-top: 0.5em;
         width: 80%;
@@ -22,7 +22,7 @@
 
     .field {
         position: relative;
-        margin: 1em 0 1em 0;
+        margin: 0em 0 1em 0;
     }
 
     button.revert {
@@ -33,7 +33,7 @@
         color: #888;
         border: none;
         position: absolute;
-        top: 1.5em;
+        top: 1em;
         left: 0.5em;
         padding: 0.4em;
         overflow: hidden;

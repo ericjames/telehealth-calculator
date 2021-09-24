@@ -35,7 +35,7 @@ const AppWithData = ({ text, dataSheets, setDataSheets }) => {
 
         console.log("START", formulaString);
 
-        const variables = formulaString.match(/[\da-z_\s]+/g); // Any variable ie 30_day_rate
+        const variables = formulaString.match(/[\d\w_\s]+/g); // Any variable ie 30_day_rate
         variables.forEach((piece) => {
             // Part of formula is either columnId ref or just a number
             if (isNaN(piece)) {
@@ -53,11 +53,19 @@ const AppWithData = ({ text, dataSheets, setDataSheets }) => {
         console.log("STEP ONE", formulaString, variables);
 
         if (formulaString.includes('(')) {
-            const sets = formulaString.match(/\([\w\d\s\/\+]*\)/g);
+            const sets = formulaString.match(/\([\w\d\s\/\+\*]*\)*/g);
             sets.forEach((set) => {
                 if (set.includes('/')) {
                     const compare = set.replace('(', '').replace(')', '').split('/');
-                    const result = parseFloat(compare[0]) / parseFloat(compare[1]);
+                    const result = compare.reduce((a, b) => a / parseFloat(b), 1);
+                    formulaString = formulaString.replace(set, result);
+                } else if (set.includes('*')) {
+                    const compare = set.replace('(', '').replace(')', '').split('*');
+                    const result = compare.reduce((a, b) => a * parseFloat(b), 1);
+                    formulaString = formulaString.replace(set, result);
+                } else if (set.includes('+')) {
+                    const compare = set.replace('(', '').replace(')', '').split('+');
+                    const result = compare.reduce((a, b) => a + parseFloat(b), 1);
                     formulaString = formulaString.replace(set, result);
                 }
             });
@@ -65,6 +73,7 @@ const AppWithData = ({ text, dataSheets, setDataSheets }) => {
         console.log("STEP TWO", formulaString);
 
         if (formulaString.includes('*') && !formulaString.includes('/') && !formulaString.includes('+')) {
+            formulaString = formulaString.replace('(', '').replace(')', '');
             const values = formulaString.split('*');
             formulaString = values.reduce((a, b) => a * parseFloat(b), 1);
         }

@@ -1,0 +1,71 @@
+[
+    {
+        "type": "editable",
+        "fieldType": "text",
+        "columnId": "hospital"
+    },
+    {
+        "type": "editable",
+        "fieldType": "text",
+        "columnId": "county"
+    },
+    {
+        "type": "editable",
+        "fieldType": "text",
+        "columnId": "annual_ER_visits"
+    },
+    {
+        "type": "editable",
+        "fieldType": "text",
+        "columnId": "annual_admissions"
+    },
+    {
+        "type": "editable",
+        "fieldType": "text",
+        "columnId": "annual_readmissions"
+    },
+    {
+        "type": "editable",
+        "fieldType": "text",
+        "columnId": "distances_miles_nearest_hospital_one_way"
+    },
+    {
+        "type": "inline_total",
+        "fieldType": "text",
+        "columnId": "total_annual_miles_driven_for_ER_admissions_readmissions"
+    },
+    {
+        "type": "locked",
+        "fieldType": "text",
+        "columnId": "IRS_reimbursement_per_miles"
+    },
+    {
+        "type": "inline_total",
+        "fieldType": "text",
+        "columnId": "total_annual_cost_driven_ER_admissions_readmissions"
+    },
+    {
+        "type": "total_both",
+        "fieldType": "text",
+        "columnId": "ten_percent_annual_savings",
+        "valueType": "dollar"
+    },
+    {
+        "type": "total_both",
+        "fieldType": "text",
+        "columnId": "ten_percent_five_year_savings",
+        "valueType": "dollar"
+    },
+    {
+        "type": "total_both",
+        "fieldType": "text",
+        "columnId": "ten_percent_ten_year_savings",
+        "valueType": "dollar"
+    },
+    {
+        "type": "total_both",
+        "fieldType": "text",
+        "columnId": "ten_percent_twenty_year_savings",
+        "valueType": "dollar"
+    }
+]

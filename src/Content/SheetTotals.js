@@ -2,6 +2,8 @@ import SheetTotalsLostProductivity from './SheetTotalsLostProductivity'
 import SheetTotalsPreventableAdmissions from './SheetTotalsPreventableAdmissions'
 import SheetTotalsAvoidable from './SheetTotalsAvoidable';
 import SheetTotalsPreventableReadmissions from './SheetTotalsPreventableReadmissions';
+import SheetTotalsPreventableERVisits from './SheetTotalsPreventableERVisits';
+import SheetTotalsAvoidableTransCosts from './SheetTotalsAvoidableTransCosts';
 
 const SheetTotals = ({ dataSheet }) => {
 
@@ -14,6 +16,12 @@ const SheetTotals = ({ dataSheet }) => {
         comp = <SheetTotalsAvoidable fields={dataSheet.fields} />;
     } else if (dataSheet.gid === 1934186887) {
         comp = <SheetTotalsPreventableReadmissions fields={dataSheet.fields} />;
+    } else if (dataSheet.gid === 1934186887) {
+        comp = <SheetTotalsPreventableReadmissions fields={dataSheet.fields} />;
+    } else if (dataSheet.gid === 1211509035) {
+        comp = <SheetTotalsPreventableERVisits fields={dataSheet.fields} />;
+    } else if (dataSheet.gid === 2094512645) {
+        comp = <SheetTotalsAvoidableTransCosts fields={dataSheet.fields} />;
     }
 
     return (

@@ -8,7 +8,7 @@ const InputField = ({ setDataSheets, dataSheet, fieldIndex }) => {
     const [originalValue, setOriginalValue] = useState(field.value);
 
     // Only show certain fields. The data still gets calculated in state 
-    if (field.type === "hidden" || field.type.includes("total")) return null;
+    if (field.type === "hidden" || field.type === "total_both" || field.type === "total_low" || field.type === "total_high") return null;
 
     // console.log("INPUTFIELD", field);
 
@@ -34,14 +34,14 @@ const InputField = ({ setDataSheets, dataSheet, fieldIndex }) => {
 
     let style = {};
     if (field.fieldType === "text") {
-        style.flexBasis = 300;
+        style.flexBasis = 250;
     }
 
     return (
-        <div className="InputField" style={style}>
+        <div className={`InputField ${field.type}`} style={style}>
             <label>{field.name}</label>
             <div className="field">
-                <input type={field.fieldType} min={field.minValue} max={field.maxValue} step={field.stepValue} maxLength={maxLength} value={field.value} onChange={onChange} disabled={field.type === "locked"} />
+                <input type={field.fieldType} min={field.minValue} max={field.maxValue} step={field.stepValue} maxLength={maxLength} value={field.value} onChange={onChange} disabled={field.type === "locked" || field.type === "inline_total"} />
                 {field.type === "editable" ? <button className="revert" onClick={revertValue}>⟳</button> : null}
             </div>
         </div>

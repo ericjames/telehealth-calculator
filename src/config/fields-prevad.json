@@ -1,16 +1,16 @@
 [
     {
+        "type": "editable",
         "fieldType": "text",
         "columnId": "county",
         "name": "County or City or Name of Hospital",
-        "type": "editable",
         "value": ""
     },
     {
-        "fieldType": "number",
-        "columnId": "admissions_per_year",
-        "name": "Admissions per year",
         "type": "editable",
+        "fieldType": "number",
+        "columnId": "annual_admissions",
+        "name": "Admissions per year",
         "value": 0,
         "valueType": "number",
         "stepValue": 1,
@@ -18,10 +18,10 @@
         "minValue": 0
     },
     {
+        "type": "editable",
         "fieldType": "number",
         "columnId": "preventable_admission_rate",
         "name": "Preventable admission rate",
-        "type": "editable",
         "value": 0,
         "valueType": "decimal",
         "stepValue": 0.001,
@@ -29,40 +29,41 @@
         "minValue": 0
     },
     {
+        "type": "inline_total",
         "fieldType": "number",
-        "columnId": "average_savings",
+        "columnId": "annual_preventable_admissions",
         "name": "Average savings per preventable admission",
-        "type": "locked",
         "value": 0
     },
     {
-        "columnId": "prev_adm_per_year",
-        "name": "",
-        "type": "total",
-        "valueType": "number"
+        "type": "locked",
+        "fieldType": "number",
+        "columnId": "savings_per_preventable_admission",
+        "name": "Savings per Admission",
+        "value": 0
     },
     {
-        "columnId": "10_pct_savings_1year",
+        "type": "total_both",
+        "columnId": "ten_percent_annual_savings",
         "name": "",
-        "type": "total",
         "valueType": "dollar"
     },
     {
-        "columnId": "10_pct_savings_5year",
+        "type": "total_both",
+        "columnId": "ten_percent_five_year_savings",
         "name": "",
-        "type": "total",
         "valueType": "dollar"
     },
     {
-        "columnId": "10_pct_savings_10year",
+        "type": "total_both",
+        "columnId": "ten_percent_ten_year_savings",
         "name": "",
-        "type": "total",
         "valueType": "dollar"
     },
     {
-        "columnId": "10_pct_savings_20year",
+        "type": "total_both",
+        "columnId": "ten_percent_twenty_year_savings",
         "name": "",
-        "type": "total",
         "valueType": "dollar"
     }
 ]

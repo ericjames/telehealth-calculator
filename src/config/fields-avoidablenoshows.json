@@ -29,21 +29,6 @@
         "value": 0
     },
     {
-        "columnId": "new_no_show_rate",
-        "type": "editable",
-        "name": "",
-        "subtitle": "",
-        "helpText": "",
-        "formula": "",
-        "seedRow1": "",
-        "fieldType": "number",
-        "valueType": "percent",
-        "stepValue": 0.1,
-        "maxValue": 100,
-        "minValue": 0,
-        "value": 0
-    },
-    {
         "columnId": "average_no_show_rate",
         "type": "hidden",
         "name": "",
@@ -60,7 +45,7 @@
     },
     {
         "columnId": "number_no_shows",
-        "type": "hidden",
+        "type": "inline_total",
         "name": "",
         "subtitle": "",
         "helpText": "",
@@ -89,36 +74,64 @@
         "value": 0
     },
     {
-        "columnId": "total_1",
-        "type": "total"
+        "columnId": "annual_cost_no_shows",
+        "type": "inline_total",
+        "name": "",
+        "subtitle": "",
+        "helpText": "",
+        "formula": "",
+        "seedRow1": "",
+        "fieldType": "number",
+        "valueType": "number",
+        "stepValue": 1,
+        "maxValue": 1000000,
+        "minValue": 0,
+        "value": 0
     },
     {
-        "columnId": "total_2",
-        "type": "total"
-    },
-    {
-        "columnId": "annual_cost-no_shows",
-        "type": "total"
+        "columnId": "new_no_show_rate",
+        "type": "editable",
+        "name": "",
+        "subtitle": "",
+        "helpText": "",
+        "formula": "",
+        "seedRow1": "",
+        "fieldType": "number",
+        "valueType": "percent",
+        "stepValue": 0.1,
+        "maxValue": 100,
+        "minValue": 0,
+        "value": 0
     },
     {
         "columnId": "new_number_no_shows",
-        "type": "total",
-        "valueType": "number"
+        "type": "inline_total",
+        "name": "",
+        "subtitle": "",
+        "helpText": "",
+        "formula": "",
+        "seedRow1": "",
+        "fieldType": "number",
+        "valueType": "number",
+        "stepValue": 1,
+        "maxValue": 10000,
+        "minValue": 0,
+        "value": 0
     },
     {
         "columnId": "annual_savings_from_new_no_show_rate",
-        "type": "total"
+        "type": "total_both"
     },
     {
         "columnId": "five_year_savings_from_new_no_show_rate",
-        "type": "total"
+        "type": "total_both"
     },
     {
         "columnId": "ten_year_savings_from_new_no_show_rate",
-        "type": "total"
+        "type": "total_both"
     },
     {
         "columnId": "twenty_year_savings_from_new_no_show_rate",
-        "type": "total"
+        "type": "total_both"
     }
 ]

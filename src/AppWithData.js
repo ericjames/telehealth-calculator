@@ -32,15 +32,21 @@ const AppWithData = ({ text, dataSheets, setDataSheets }) => {
         const parts = field.formula.split("*");
         const values = parts.map((part) => {
             // Part of formula is either columnId ref or just a number
-            let convertedValue = part.trim();
+            let colRefValue = part.trim();
+
+            // Attempt to replace the value with the referred column
             for (let field of fields) {
-                if (field.columnId === convertedValue) {
-                    convertedValue = parseFloat(field.value);
+                if (field.columnId === colRefValue) {
+                    // const sanitizedValue = field.value.replace(",", "");
+                    colRefValue = parseFloat(field.value);
                     break;
                 }
             }
-            return convertedValue;
+
+            return colRefValue;
         });
+
+        // console.log("To Calculate", values);
 
         let totalValue = null;
         try {

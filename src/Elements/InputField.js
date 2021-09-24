@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 
+import DisplayedNumber from './DisplayedNumber';
 
 const InputField = ({ setDataSheets, dataSheet, fieldIndex }) => {
 
@@ -41,8 +42,9 @@ const InputField = ({ setDataSheets, dataSheet, fieldIndex }) => {
         <div className={`InputField ${field.type}`} style={style}>
             <label>{field.name}</label>
             <div className="field">
-                <input type={field.fieldType} min={field.minValue} max={field.maxValue} step={field.stepValue} maxLength={maxLength} value={field.value} onChange={onChange} disabled={field.type === "locked" || field.type === "inline_total"} />
+                {field.type === "editable" ? <input type={field.fieldType} min={field.minValue} max={field.maxValue} step={field.stepValue} maxLength={maxLength} value={field.value} onChange={onChange} disabled={field.type === "locked" || field.type === "inline_total"} /> : null}
                 {field.type === "editable" ? <button className="revert" onClick={revertValue}>⟳</button> : null}
+                {field.type === "locked" || field.type === "inline_total" ? <DisplayedNumber value={field.value} valueType={field.valueType} /> : null}
             </div>
         </div>
     )

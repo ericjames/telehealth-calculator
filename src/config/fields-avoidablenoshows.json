@@ -82,7 +82,7 @@
         "formula": "",
         "seedRow1": "",
         "fieldType": "number",
-        "valueType": "number",
+        "valueType": "dollar",
         "stepValue": 1,
         "maxValue": 1000000,
         "minValue": 0,
@@ -120,18 +120,22 @@
     },
     {
         "columnId": "annual_savings_from_new_no_show_rate",
+        "valueType": "dollar",
         "type": "total_both"
     },
     {
         "columnId": "five_year_savings_from_new_no_show_rate",
+        "valueType": "dollar",
         "type": "total_both"
     },
     {
         "columnId": "ten_year_savings_from_new_no_show_rate",
+        "valueType": "dollar",
         "type": "total_both"
     },
     {
         "columnId": "twenty_year_savings_from_new_no_show_rate",
+        "valueType": "dollar",
         "type": "total_both"
     }
 ]

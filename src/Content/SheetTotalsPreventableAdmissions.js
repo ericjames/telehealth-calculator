@@ -1,7 +1,7 @@
 import Result from '../Elements/Result';
 
 const SheetTotalsPreventableAdmissions = ({ fields }) => {
-    console.log("Total Prev", fields);
+    // console.log("Total Prev", fields);
     if (!fields) return null;
     return (
         <div className="pure-g">

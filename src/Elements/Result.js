@@ -4,7 +4,6 @@ const Result = ({ field }) => {
     // console.log(field);
     if (!field) return null;
 
-
     return (
         <div className="Result">
             {!field.subtitle ? <h4>{field.name}</h4> : null}

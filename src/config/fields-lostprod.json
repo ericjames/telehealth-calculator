@@ -1,7 +1,6 @@
 [
     {
         "columnId": "county",
-        "name": "County or City (for reference only)",
         "type": "editable",
         "fieldType": "text",
         "value": "",
@@ -9,8 +8,7 @@
         "valueType": "text"
     },
     {
-        "columnId": "percent_months",
-        "name": "Percent of working-age population reporting poor health days each month (2020) (a)",
+        "columnId": "rate_poor_health_days",
         "type": "editable",
         "fieldType": "number",
         "value": 0,
@@ -20,8 +18,7 @@
         "minValue": 0
     },
     {
-        "columnId": "working_age",
-        "name": "Working age population 16-64 (b)",
+        "columnId": "working_age_pop",
         "type": "editable",
         "fieldType": "number",
         "value": 0,
@@ -31,8 +28,7 @@
         "minValue": 0
     },
     {
-        "columnId": "poor_health",
-        "name": "Average number of poor health days per month for each reportee (2020) (c)",
+        "columnId": "poor_health_days_per_month",
         "type": "editable",
         "fieldType": "number",
         "value": 0,
@@ -42,8 +38,7 @@
         "minValue": 0
     },
     {
-        "columnId": "fed_min_wage",
-        "name": "Federal minimum wage",
+        "columnId": "federal_minimum_wage",
         "type": "editable",
         "fieldType": "number",
         "value": 0,
@@ -54,7 +49,6 @@
     },
     {
         "columnId": "median_area_wage",
-        "name": "Median area wage (May 2020) (x)",
         "value": 0,
         "type": "editable",
         "fieldType": "number",
@@ -64,60 +58,67 @@
         "minValue": 0
     },
     {
-        "columnId": "hours_lost_year",
-        "name": "Hours lost per year for each reported poor health day per month (8 hours*12 months)",
-        "type": "hidden",
-        "fieldType": "number",
-        "value": 0
+        "columnId": "average_daily_compensation_federal_wage",
+        "type": "inline_total",
+        "valueType": "dollar"
     },
     {
-        "columnId": "lost_prod_1year",
-        "name": "",
-        "type": "total"
+        "columnId": "average_daily_compensation_median_wage",
+        "type": "inline_total",
+        "valueType": "dollar"
     },
     {
-        "columnId": "lost_prod_1year_median",
-        "name": "",
-        "type": "total"
+        "columnId": "lost_productivity_multiplier",
+        "type": "hidden"
     },
     {
-        "columnId": "recov_prod_1year_min_wage",
-        "name": "",
-        "type": "total"
+        "columnId": "annual_lost_productivity_federal_wage",
+        "type": "inline_total",
+        "valueType": "dollar"
     },
     {
-        "columnId": "recov_prod_5year_min_wage",
-        "name": "",
-        "type": "total"
+        "columnId": "annual_lost_productivity_median_wage",
+        "type": "inline_total",
+        "valueType": "dollar"
     },
     {
-        "columnId": "recov_prod_10year_min_wage",
-        "name": "",
-        "type": "total"
+        "columnId": "annual_savings_federal_wage_ten_percent",
+        "valueType": "dollar",
+        "type": "total_low"
     },
     {
-        "columnId": "recov_prod_20year_min_wage",
-        "name": "",
-        "type": "total"
-    },
-    {
-        "columnId": "recov_prod_1year_median",
-        "name": "",
+        "columnId": "annual_savings_median_wage_ten_percent",
+        "valueType": "dollar",
         "type": "total_high"
     },
     {
-        "columnId": "recov_prod_5year_median",
-        "name": "",
+        "columnId": "five_year_savings_federal_wage_ten_percent",
+        "valueType": "dollar",
+        "type": "total_low"
+    },
+    {
+        "columnId": "five_year_savings_median_wage_ten_percent",
+        "valueType": "dollar",
         "type": "total_high"
     },
     {
-        "columnId": "recov_prod_10year_median",
-        "name": "",
+        "columnId": "ten_year_savings_federal_wage_ten_percent",
+        "valueType": "dollar",
+        "type": "total_low"
+    },
+    {
+        "columnId": "ten_year_savings_median_wage_ten_percent",
+        "valueType": "dollar",
         "type": "total_high"
     },
     {
-        "columnId": "recov_prod_20year_median",
-        "name": "",
-        "type": "total_high"
+        "columnId": "twenty_year_savings_federal_wage_ten_percent",
+        "valueType": "dollar",
+        "type": "total_low"
+    },
+    {
+        "columnId": "twenty_year_savings_median_wage_ten_percent",
+        "type": "total_high",
+        "valueType": "dollar"
     }
 ]

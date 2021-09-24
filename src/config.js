@@ -13,7 +13,7 @@ export default {
     // This essentially represents the State model for the entire App
     setupDataSheets: [{
         gid: 1631211154,
-        readCellRange: 'A1:R15',
+        readCellRange: 'A1:Z15', // Careful data could be beyond this range
 
         id: "avoidablenoshows",
         title: "Avoidable No Shows",
@@ -29,25 +29,8 @@ export default {
         formulaRow: 7,
         initialValueRow: 8,
     }, {
-        gid: 1657140223,
-        readCellRange: 'A1:R15',
-
-        id: "lostprod",
-        title: "Lost Productivity",
-        fields: fieldsLostProductivity,
-        rows: [],// for reference 
-
-        // Actual row number in sheet
-        rowIndexOfColumnIds: 2,
-        fieldTypeRow: 3,
-        titleRow: 4,
-        subtitleRow: 5,
-        helpTextRow: 6,
-        formulaRow: 7,
-        initialValueRow: 8,
-    }, {
         gid: 1029269315,
-        readCellRange: 'A1:R15',
+        readCellRange: 'A1:Z15', // Careful data could be beyond this range
 
         id: "prevadm",
         title: "Preventable Admissions",
@@ -62,6 +45,23 @@ export default {
         helpTextRow: 6,
         formulaRow: 7,
         initialValueRow: 8,
-    },
+    }, {
+        gid: 1657140223,
+        readCellRange: 'A1:Z15', // Careful data could be beyond this range
+
+        id: "lostprod",
+        title: "Lost Productivity",
+        fields: fieldsLostProductivity,
+        rows: [],// for reference 
+
+        // Actual row number in sheet
+        rowIndexOfColumnIds: 2,
+        fieldTypeRow: 3,
+        titleRow: 4,
+        subtitleRow: 5,
+        helpTextRow: 6,
+        formulaRow: 7,
+        initialValueRow: 8,
+    }
     ]
 }

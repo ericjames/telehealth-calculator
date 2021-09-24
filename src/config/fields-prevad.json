@@ -40,6 +40,7 @@
         "fieldType": "number",
         "columnId": "savings_per_preventable_admission",
         "name": "Savings per Admission",
+        "valueType": "dollar",
         "value": 0
     },
     {

@@ -20,6 +20,7 @@ const AppWithData = ({ text, dataSheets, setDataSheets }) => {
     function calculateTotals(sheets) {
         return sheets.map((sheet) => {
             sheet.fields.forEach((field) => {
+                // console.log("OMG", field);
                 if (field && field.formula && field.formula !== 'null') {
                     field.value = getFieldTotalValue(sheet.fields, field);
                 }
@@ -46,11 +47,14 @@ const AppWithData = ({ text, dataSheets, setDataSheets }) => {
             return colRefValue;
         });
 
-        // console.log("To Calculate", values);
+        // console.log("To Calculate", field.formula, parts, values);
 
         let totalValue = null;
         try {
             totalValue = values.reduce((a, b) => a * parseFloat(b), 1);
+            // if (field.valueType === "dollar") {
+            //     totalValue = totalValue.toFixed(2);
+            // }
         } catch (e) {
             console.error(e);
         }

@@ -27,6 +27,18 @@
         margin: 0em 0 1em 0;
     }
 
+    // Sometimes input fields will show totals
+    .number {
+        text-align: right;
+        font-size: 1.1em;
+        padding-right: 1em;
+        border-bottom: 1px solid #ccc;
+    }
+
+    // &:not(.inline_total ~ .inline_total).inline_total {
+    // First of type
+    // }
+
     &.inline_total {
         input {
             background: none;

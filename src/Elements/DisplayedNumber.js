@@ -8,13 +8,18 @@ const DisplayedNumber = ({ value, valueType }) => {
     const numeral = parseFloat(value);
 
     if (numeral) {
-        if (valueType && valueType === "number") {
-            displayedNumber = Math.round(numeral);
-        } else {
+        if (valueType === "number") {
+            displayedNumber = millify(numeral, {
+                precision: 2,
+                decimalSeparator: ","
+            });
+        } else if (valueType === "dollar") {
             displayedNumber = `$${millify(numeral, {
                 precision: 1,
                 space: true,
             }).replace("M", " M")}`;
+        } else {
+            displayedNumber = Math.round(numeral);
         }
     } else {
         displayedNumber = "---";

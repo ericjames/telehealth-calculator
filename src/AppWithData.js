@@ -30,36 +30,53 @@ const AppWithData = ({ text, dataSheets, setDataSheets }) => {
     }
 
     function getFieldTotalValue(fields, field) {
-        const parts = field.formula.split("*");
-        const values = parts.map((part) => {
-            // Part of formula is either columnId ref or just a number
-            let colRefValue = part.trim();
 
-            // Attempt to replace the value with the referred column
-            for (let field of fields) {
-                if (field.columnId === colRefValue) {
-                    // const sanitizedValue = field.value.replace(",", "");
-                    colRefValue = parseFloat(field.value);
-                    break;
+        let formulaString = field.formula.replace(',', '');
+
+        console.log("START", formulaString);
+
+        const variables = formulaString.match(/[\da-z_\s]+/g); // Any variable ie 30_day_rate
+        variables.forEach((piece) => {
+            // Part of formula is either columnId ref or just a number
+            if (isNaN(piece)) {
+                // Attempt to replace the value with the referred column's value
+                for (let field of fields) {
+                    if (field.columnId === piece.trim()) {
+                        // const sanitizedValue = field.value.replace(",", "");
+                        formulaString = formulaString.replace(piece, field.value);
+                        break;
+                    }
                 }
             }
-
-            return colRefValue;
         });
 
-        // console.log("To Calculate", field.formula, parts, values);
+        console.log("STEP ONE", formulaString, variables);
 
-        let totalValue = null;
-        try {
-            totalValue = values.reduce((a, b) => a * parseFloat(b), 1);
-            // if (field.valueType === "dollar") {
-            //     totalValue = totalValue.toFixed(2);
-            // }
-        } catch (e) {
-            console.error(e);
+        if (formulaString.includes('(')) {
+            const sets = formulaString.match(/\([\w\d\s\/\+]*\)/g);
+            sets.forEach((set) => {
+                if (set.includes('/')) {
+                    const compare = set.replace('(', '').replace(')', '').split('/');
+                    const result = parseFloat(compare[0]) / parseFloat(compare[1]);
+                    formulaString = formulaString.replace(set, result);
+                }
+            });
         }
+        console.log("STEP TWO", formulaString);
+
+        if (formulaString.includes('*') && !formulaString.includes('/') && !formulaString.includes('+')) {
+            const values = formulaString.split('*');
+            formulaString = values.reduce((a, b) => a * parseFloat(b), 1);
+        }
+
+        console.log("STEP THREE", formulaString);
+
+        // if (field.valueType === "dollar") {
+        //     totalValue = totalValue.toFixed(2);
+        // }
+
         // console.log(totalValue, values);
-        return totalValue;
+        return formulaString;
     }
 
     function onChange() {

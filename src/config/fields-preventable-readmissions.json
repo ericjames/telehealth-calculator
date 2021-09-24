@@ -1,0 +1,57 @@
+[
+    {
+        "type": "editable",
+        "fieldType": "text",
+        "columnId": "hospital"
+    },
+    {
+        "type": "editable",
+        "fieldType": "number",
+        "columnId": "annual_admissions"
+    },
+    {
+        "type": "editable",
+        "fieldType": "number",
+        "columnId": "30_day_readmission_rate"
+    },
+    {
+        "type": "inline_total",
+        "fieldType": "number",
+        "columnId": "annual_readmissions"
+    },
+    {
+        "type": "hidden",
+        "fieldType": "number",
+        "columnId": "savings_per_preventable_readmission"
+    },
+    {
+        "type": "inline_total",
+        "valueType": "dollar",
+        "columnId": "annual_cost_readmissions"
+    },
+    {
+        "type": "editable",
+        "fieldType": "number",
+        "columnId": "percent_preventable_readmissions"
+    },
+    {
+        "type": "total_both",
+        "valueType": "dollar",
+        "columnId": "twenty_five_percent_annual_savings"
+    },
+    {
+        "type": "total_both",
+        "valueType": "dollar",
+        "columnId": "twenty_five_percent_five_year_savings"
+    },
+    {
+        "type": "total_both",
+        "valueType": "dollar",
+        "columnId": "twenty_five_percent_ten_year_savings"
+    },
+    {
+        "type": "total_both",
+        "valueType": "dollar",
+        "columnId": "twenty_five_percent_twenty-year_savings"
+    }
+]

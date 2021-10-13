@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import DataSheet from './Content/DataSheet.js';
 import TotalsBanner from './Footer/TotalsBanner.js';
 
+import config from './config.js';
 
 const AppWithData = ({ text, dataSheets, setDataSheets }) => {
 
@@ -33,7 +34,7 @@ const AppWithData = ({ text, dataSheets, setDataSheets }) => {
 
         let formulaString = field.formula.replace(',', '');
 
-        console.log("START", formulaString);
+        // console.log("START", formulaString);
 
         const variables = formulaString.match(/[\d\w_\s]+/g); // Any variable ie 30_day_rate
         variables.forEach((piece) => {
@@ -50,14 +51,14 @@ const AppWithData = ({ text, dataSheets, setDataSheets }) => {
             }
         });
 
-        console.log("STEP ONE", formulaString, variables);
+        // console.log("STEP ONE", formulaString, variables);
 
         if (formulaString.includes('(')) {
             const sets = formulaString.match(/\([\w\d\s\/\+\*]*\)*/g);
             sets.forEach((set) => {
                 if (set.includes('/')) {
                     const compare = set.replace('(', '').replace(')', '').split('/');
-                    const result = compare.reduce((a, b) => a / parseFloat(b), 1);
+                    const result = parseFloat(compare[0]) / parseFloat(compare[1]);
                     formulaString = formulaString.replace(set, result);
                 } else if (set.includes('*')) {
                     const compare = set.replace('(', '').replace(')', '').split('*');
@@ -70,7 +71,7 @@ const AppWithData = ({ text, dataSheets, setDataSheets }) => {
                 }
             });
         }
-        console.log("STEP TWO", formulaString);
+        // console.log("STEP TWO", formulaString);
 
         if (formulaString.includes('*') && !formulaString.includes('/') && !formulaString.includes('+')) {
             formulaString = formulaString.replace('(', '').replace(')', '');
@@ -78,7 +79,7 @@ const AppWithData = ({ text, dataSheets, setDataSheets }) => {
             formulaString = values.reduce((a, b) => a * parseFloat(b), 1);
         }
 
-        console.log("STEP THREE", formulaString);
+        // console.log("STEP THREE", formulaString);
 
         // if (field.valueType === "dollar") {
         //     totalValue = totalValue.toFixed(2);
@@ -97,9 +98,11 @@ const AppWithData = ({ text, dataSheets, setDataSheets }) => {
     return (
         <div className="AppWithData">
 
-            {dataSheets && dataSheets.map((sheet) => (
-                <DataSheet key={sheet.id} dataSheet={sheet} setDataSheets={setDataSheets} />
-            ))}
+            {dataSheets && dataSheets.map((sheet) => {
+                if (sheet.gid === config.initialSheetGid) {
+                    return <DataSheet key={sheet.id} dataSheet={sheet} setDataSheets={setDataSheets} />
+                }
+            })}
 
             <TotalsBanner text={text} dataSheets={dataSheetsWithTotals} />
 

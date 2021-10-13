@@ -13,6 +13,8 @@ export default {
         rowIndexOfColumnIds: 2,
     },
 
+    initialSheetGid: 1934186887,
+
     // This essentially represents the State model for the entire App
     setupDataSheets: [
         {

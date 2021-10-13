@@ -15,6 +15,11 @@
         "columnId": "30_day_readmission_rate"
     },
     {
+        "type": "hidden",
+        "fieldType": "number",
+        "columnId": "aa_division"
+    },
+    {
         "type": "inline_total",
         "fieldType": "number",
         "columnId": "annual_readmissions"

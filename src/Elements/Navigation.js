@@ -46,7 +46,7 @@ const Navigation = ({ dataSheets, text, currentPage, setCurrentPage, selectedShe
                 <div className={`checkbox-dropdown ${opened ? 'opened' : ''}`} style={{ height: !opened ? 0 : 350 }}>
                     {dataSheets && dataSheets.map((sheet) => (
                         <div key={sheet.gid} className="checkbox-toggle" onClick={toggleSheet}>
-                            <input type="checkbox" checked={sheet.active} value={sheet.gid} />
+                            <input type="checkbox" checked={sheet.active} readOnly value={sheet.gid} />
                             {sheet.title}
                         </div>
                     ))}

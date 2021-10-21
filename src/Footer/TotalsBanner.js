@@ -8,6 +8,7 @@ const TotalsBanner = ({ dataSheets, text }) => {
     let lowBoundFieldSets = [];
     let highBoundFieldSets = [];
     dataSheets.forEach((sheet, i) => {
+        if (!sheet.active) return; // @NOTE only active sheets calculate a grand total
         lowBoundFieldSets[i] = [];
         highBoundFieldSets[i] = [];
         sheet.fields.forEach((field) => {

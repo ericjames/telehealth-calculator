@@ -37,7 +37,7 @@ function App() {
     let newSheet = null;
 
     const rows = await getGoogleSpreadsheetRows(sheet.gid, sheet.rowIndexOfColumnIds, sheet.readCellRange);
-    const indexOffset = 1;
+    // const indexOffset = 1;
 
     newSheet = {};
     rows.forEach((row, i) => {
@@ -165,8 +165,8 @@ function App() {
 
       <header className="main-header">
         <div className="container">
-          <h1>{text && text.headerTitle || "..."}</h1>
-          <span>{text && text.headerText || "..."}</span>
+          <h1>{text && (text.headerTitle || "...")}</h1>
+          <span>{text && (text.headerText || "...")}</span>
         </div>
       </header>
 

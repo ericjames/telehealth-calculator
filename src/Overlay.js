@@ -7,10 +7,10 @@ const Overlay = ({ id, currentPage, title, text, setCurrentPage }) => {
         let textArray = text.split(/^/gm);
         // console.log(textArray);
         if (textArray) {
-            return textArray.map((line) => {
+            return textArray.map((line, i) => {
                 let textWithLinks = line.replace(/(https:\/\/[\w\d.\/-]*)/gi, '<a target="new" href="$1">$1</a>');
                 // console.log(textWithLinks);
-                return <p dangerouslySetInnerHTML={{ __html: textWithLinks }}></p>;
+                return <p key={i} dangerouslySetInnerHTML={{ __html: textWithLinks }}></p>;
             })
         }
         return <p>{text}</p>;

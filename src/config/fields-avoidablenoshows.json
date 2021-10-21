@@ -98,7 +98,7 @@
         "seedRow1": "",
         "fieldType": "number",
         "valueType": "percent",
-        "stepValue": 0.1,
+        "stepValue": 0.01,
         "maxValue": 100,
         "minValue": 0,
         "value": 0

@@ -7,12 +7,12 @@ const SheetTotalsPreventableERVisits = ({ fields }) => {
         <div className="pure-g">
             <div className="pure-u-1">
                 <div className="ResultGroup">
-                    <h4>{fields[7].name}</h4>
+                    <h4>{fields[8].name}</h4>
                     <div className="ResultTotals">
-                        <Result field={fields[7]} />
                         <Result field={fields[8]} />
                         <Result field={fields[9]} />
                         <Result field={fields[10]} />
+                        <Result field={fields[11]} />
                     </div>
                 </div>
             </div>

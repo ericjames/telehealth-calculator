@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import DisplayedNumber from './DisplayedNumber';
+import HelpText from './HelpText';
 
 const InputField = ({ setDataSheets, dataSheet, fieldIndex }) => {
 
@@ -40,7 +41,7 @@ const InputField = ({ setDataSheets, dataSheet, fieldIndex }) => {
 
     return (
         <div className={`InputField ${field.type}`} style={style}>
-            <label>{field.name}</label>
+            <label>{field.name} <HelpText field={field} /></label>
             <div className="field">
                 {field.type === "editable" ? <input type={field.fieldType} min={field.minValue} max={field.maxValue} step={field.stepValue} maxLength={maxLength} value={field.value} onChange={onChange} disabled={field.type === "locked" || field.type === "inline_total"} /> : null}
                 {field.type === "editable" ? <button className="revert" onClick={revertValue}>⟳</button> : null}
@@ -56,10 +57,8 @@ function getMaxLength(field) {
         maxLength = 20;
     } else {
         // All other field types are numbers
-
     }
     return maxLength
 };
-
 
 export default InputField;

@@ -14,7 +14,7 @@
         "value": 0,
         "valueType": "number",
         "stepValue": 1,
-        "maxValue": 1000,
+        "maxValue": 100000,
         "minValue": 0
     },
     {
@@ -42,6 +42,12 @@
         "name": "Savings per Admission",
         "valueType": "dollar",
         "value": 0
+    },
+    {
+        "type": "inline_total",
+        "fieldType": "number",
+        "columnId": "annual_cost_admissions",
+        "valueType": "dollar"
     },
     {
         "type": "total_both",

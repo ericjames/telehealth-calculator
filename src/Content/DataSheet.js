@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 
 import InputArea from './InputArea';
 import SheetTotals from './SheetTotals';
 
-const DataSheet = ({ setDataSheets, dataSheet }) => {
+const DataSheet = ({ setDataSheets, selectedSheet, dataSheet }) => {
 
     // console.log("DataSheet", dataSheet);
     // Example object which has been transformed in App.js 
@@ -13,15 +13,19 @@ const DataSheet = ({ setDataSheets, dataSheet }) => {
     // rows: [{ … }]
     // title: "Lost Productivity
 
+    const isSelected = parseFloat(selectedSheet) === dataSheet.gid;
+
     return (
-        <div className="DataSheet">
-            <h2>{dataSheet.title || "..."}</h2>
-            {dataSheet && dataSheet.fields ?
-                <>
-                    <InputArea dataSheet={dataSheet} setDataSheets={setDataSheets} />
-                    <SheetTotals dataSheet={dataSheet} />
-                </>
-                : null}
+        <div className={`DataSheet ${isSelected ? 'Selected' : ''}`}>
+            <div className="container">
+                <h2>{dataSheet.title || "..."}</h2>
+                {dataSheet && dataSheet.fields ?
+                    <>
+                        <InputArea dataSheet={dataSheet} setDataSheets={setDataSheets} />
+                        <SheetTotals dataSheet={dataSheet} />
+                    </>
+                    : null}
+            </div>
         </div>
     )
 };

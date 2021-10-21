@@ -18,9 +18,9 @@
         color: #6aa8ff;
     }
     .container {
-        background: #185bbd;
-        color: #6aa8ff;
-        box-shadow: 0 1em 3em #aaa;
+        background: #477172;
+        color: #eee;
+        box-shadow: 0 1em 3em #477172;
         border-radius: 2em;
         max-width: 1350px;
         margin: auto;
@@ -34,11 +34,11 @@
         h3 {
             text-align: center;
             flex: 0 0 3em;
-            color: #6aa8ff;
+            color: #aaa;
         }
         .value {
             flex: 0 1 100%;
-            border-right: 1px solid #0c4492;
+            border-right: 1px solid #aaa;
             padding-right: 0.5em;
             padding-left: 0.5em;
             &:last-child {
@@ -46,8 +46,8 @@
             }
             .number {
                 color: #fff;
-                font-size: 1.5em;
-                font-weight: 400;
+                font-size: 1.6em;
+                font-weight: 600;
                 text-align: center;
             }
         }

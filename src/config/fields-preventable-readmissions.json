@@ -12,7 +12,8 @@
     {
         "type": "editable",
         "fieldType": "number",
-        "columnId": "30_day_readmission_rate"
+        "columnId": "30_day_readmission_rate",
+        "stepValue": 0.001
     },
     {
         "type": "hidden",

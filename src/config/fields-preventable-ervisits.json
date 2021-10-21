@@ -30,9 +30,16 @@
         "columnId": "savings_per_preventable_ER_visit"
     },
     {
+        "type": "locked",
+        "fieldType": "number",
+        "step": 0.1,
+        "columnId": "percent_savings"
+    },
+    {
         "type": "inline_total",
         "fieldType": "number",
-        "columnId": "percent_savings"
+        "columnId": "annual_cost_ER_visits",
+        "valueType": "dollar"
     },
     {
         "type": "total_both",

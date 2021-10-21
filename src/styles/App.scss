@@ -1,5 +1,6 @@
 .App {
-    background: #C7D0E2;
+    background: rgb(248, 251, 255);
+    background: linear-gradient(0deg, rgba(248, 251, 255, 1) 0%, rgba(232, 245, 252, 1) 100%);
 }
 
 .Loading {
@@ -9,9 +10,9 @@
     display: flex;
     height: 100%;
     width: 100%;
-    background: #2d79e6;
-    color: #fff;
+    color: #497175;
     position: absolute;
+    font-weight: 800;
     font-size: 1.5em;
     top: 0;
     left: 0;
@@ -24,11 +25,11 @@
     padding-bottom: 250px;
     // background: #E2ccF5;
     border-radius: 1em;
+    min-height: 55vh;
 }
 
 .navigation {
     text-align: center;
-    background:#0C4492;
 
     button {
         padding: 0.5em 1em 0.5em 1em;
@@ -37,13 +38,33 @@
         font-weight: 600;
         cursor: pointer;
         border: none;
-        color: #eee;
-        background: none;
+        color: #497175;
+        margin: 1em;
         min-width: 200px;
         transition: ease-in background-color 250ms;
+        border: 1px solid #497175;
+        border-radius: 2em;
+        background: none;
         &:hover {
-            color: #fff;
-            background: #203b73;
+            color: #111;
+            background: #eee;
+        }
+    }
+
+    .selector {
+        padding: 0.5em 1em 0.5em 1em;
+        font: inherit;
+        font-size: 1.2em;
+        font-weight: 600;
+        cursor: pointer;
+        border: 1px solid #497175;
+        border-radius: 2em;
+        color: #497175;
+        background: none;
+        transition: ease-in background-color 250ms;
+        &:hover {
+            color: #111;
+            background: #eee;
         }
     }
 }
@@ -51,27 +72,44 @@
 .main-header {
     text-align: center;
     padding: 3em 0 3em 0;
-    color: #fff;
-    background: rgb(5, 52, 118);
-    background: linear-gradient(130deg, rgba(45, 121, 230, 1) 0%, rgba(5, 52, 118, 1) 100%);
     display: block;
     .container {
         margin: auto;
         max-width: 1000px;
         width: 86%;
     }
-    h1 {
-        color: #fff;
+}
+
+.dismiss {
+    float: right;
+    padding: 0.5em;
+    border-radius: 2em;
+    border: 1px solid #888;
+    width: 2.5em;
+    height: 2.5em;
+    font-size: 1.2em;
+    cursor: pointer;
+    &:hover {
+        background: #aaa;
     }
 }
 
 .DataSheet {
-    margin: 1em 1em 3em 1em;
-    padding: 0.5em 2em;
-    border-radius: 1.5em;
-    background: rgb(248, 251, 255);
-    background: linear-gradient(280deg, rgba(248, 251, 255, 1) 0%, rgba(226, 233, 245, 1) 100%);
-
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    .container {
+        border-radius: 1.5em;
+        background: #fff;
+        box-shadow: 0 0.5em 2em #ddd;
+        margin: 2em;
+        padding: 0.5em 2em;
+    }
+    transition: max-height 350ms linear;
+    max-height: 0px;
+    &.Selected {
+        max-height: 1000px;
+    }
 }
 
 .InputArea {

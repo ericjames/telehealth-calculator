@@ -26,7 +26,7 @@ const SheetTotals = ({ dataSheet }) => {
 
     return (
         <div className="SheetTotals">
-            <h3>Totals</h3>
+            <h3>Total Savings</h3>
             <div className="SheetTotals-inner">
                 {comp}
             </div>

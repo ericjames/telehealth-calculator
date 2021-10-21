@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import { GoogleSpreadsheet } from 'google-spreadsheet';
 
 import AppWithData from './AppWithData.js';
+import Navigation from './Elements/Navigation.js';
+import Overlay from './Overlay.js';
 
 import config from './config.js';
 
@@ -12,11 +14,9 @@ function App() {
 
   const [dataSheets, setDataSheets] = useState(null);
   const [text, setText] = useState(null);
-  const [pages, setPages] = useState({
-    front: true,
-    about: false,
-    sources: false,
-  });
+  const [currentPage, setCurrentPage] = useState('home');
+
+  const [selectedSheet, setSelectedSheet] = useState(config.initialSheetGid);
 
   useEffect(() => {
     getGoogleData();
@@ -191,14 +191,7 @@ function App() {
     return newSheet;
   }
 
-  function setPage(targetPage) {
-    const newPages = { ...pages };
-    for (let page in newPages) {
-      newPages[page] = false;
-    }
-    newPages[targetPage] = true;
-    setPages(newPages);
-  }
+  console.log(text);
 
   return (
     <div className="App">
@@ -210,34 +203,18 @@ function App() {
         </div>
       </header>
 
-      <nav className="navigation">
-        <button onClick={() => setPage('front')}>Home</button>
-        <button onClick={() => setPage('about')}>About</button>
-        <button onClick={() => setPage('sources')}>Sources</button>
-      </nav>
+      <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage} selectedSheet={selectedSheet} setSelectedSheet={setSelectedSheet} />
 
-
-      <div className="Front" style={{ opacity: pages.front ? 1 : 0.2 }}>
+      <div className="Front" style={{ opacity: currentPage === 'home' ? 1 : 0.2 }}>
 
         {!dataSheets ? <div className="Loading">Loading...</div> : null}
 
-        <AppWithData text={text} dataSheets={dataSheets} setDataSheets={setDataSheets} />
+        <AppWithData text={text} selectedSheet={selectedSheet} dataSheets={dataSheets} setDataSheets={setDataSheets} setCurrentPage={setCurrentPage} />
       </div>
 
-      <div className="Overlay About" style={{ opacity: pages.about ? 1 : 0, display: pages.about ? 'block' : 'none' }}>
-        <div className="container">
-          <h1>{text && text.aboutTitle}</h1>
-          <p>{text && text.aboutText}</p>
-        </div>
-      </div>
+      <Overlay id="about" title={text && text.aboutTitle} text={text && text.aboutText} currentPage={currentPage} setCurrentPage={setCurrentPage} />
 
-      <div className="Overlay Sources" style={{ opacity: pages.sources ? 1 : 0, display: pages.sources ? 'block' : 'none' }}>
-        <div className="container">
-          <h1>{text && text.sourcesTitle}</h1>
-          <p>{text && text.sourcesText}</p>
-        </div>
-
-      </div>
+      <Overlay id="sources" title={text && text.sourcesTitle} text={text && text.sourcesText} currentPage={currentPage} setCurrentPage={setCurrentPage} />
 
     </div>
   );

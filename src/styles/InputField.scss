@@ -1,6 +1,7 @@
 .InputField {
-    flex: 0 1 12%;
+    flex: 0.1 1 12%;
     min-width: 130px;
+    margin-right: 0.5em;
 
     display: flex;
     flex-direction: column;
@@ -8,31 +9,36 @@
     label {
         flex: 0 1 70%;
         color: #777;
-        font-weight: 600;
-    }
-
-    input {
-        flex: 0 1 auto;
-        font-size: 1.1em;
-        padding: 0.7em 0.7em 0.7em 2em;
-        margin-top: 0.5em;
-        width: 80%;
-        border-radius: 0.2em;
-        border: 1px solid #494283;
-        text-align: right;
+        font-weight: 500;
+        position: relative;
     }
 
     .field {
         position: relative;
-        margin: 0em 0 1em 0;
-    }
+        margin: 1em 0 2em 0;
 
-    // Sometimes input fields will show totals
-    .number {
-        text-align: right;
-        font-size: 1.1em;
-        padding-right: 1em;
-        border-bottom: 1px solid #ccc;
+        display: flex;
+
+        input {
+            flex: 1 1 auto;
+            width: 100%;
+            font-size: 1.2em;
+            padding: 0.7em 0.7em 0.7em 2em;
+            border-radius: 0.2em;
+            border: 1px solid #494283;
+            text-align: right;
+            font-family: Arial, Verdana;
+        }
+        // Sometimes input fields will show totals
+        .number {
+            flex: 1 1 auto;
+            width: 100%;
+            text-align: right;
+            font-size: 1.2em;
+            padding: 0 1em 0.5em 0;
+            border-bottom: 1px solid #ccc;
+            font-family: Arial, Verdana;
+        }
     }
 
     // &:not(.inline_total ~ .inline_total).inline_total {
@@ -63,7 +69,7 @@
         color: #888;
         border: none;
         position: absolute;
-        top: 1em;
+        top: 0.5em;
         left: 0.5em;
         padding: 0.4em;
         overflow: hidden;

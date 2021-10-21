@@ -90,10 +90,12 @@ function App() {
   async function getNewDataSheet(sheet, index) {
 
     const rows = await getGoogleSpreadsheetRows(sheet.gid, sheet.rowIndexOfColumnIds, sheet.readCellRange);
+    // console.log(rows);
 
     const indexOffset = 1;
 
     // Separate out data rows, each one serves a different purpose
+    const sheetTitleRow = rows[sheet.sheetTitleRow - indexOffset];
     const fieldTypeRow = rows[sheet.fieldTypeRow - indexOffset];
     const titles = rows[sheet.titleRow - indexOffset];
     const subtitles = rows[sheet.subtitleRow - indexOffset];
@@ -112,9 +114,10 @@ function App() {
 
     // Setup final merged sheet
     const newSheet = {
+      ...sheet, // Important, ingest all config values
       index, // Used for updating this parent state in child components
       fields, // This is synonymous with columns of the spreadsheet
-      ...sheet // Important, ingest all config values
+      title: Object.values(sheetTitleRow)[1] // @TODO The mapping assigns cols to the "title" row
     };
 
     // Set the initial value data to override default sheet config fields

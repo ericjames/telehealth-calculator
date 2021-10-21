@@ -17,7 +17,8 @@
     {
         "type": "editable",
         "fieldType": "number",
-        "columnId": "ER_visits_per_1k"
+        "columnId": "ER_visits_per_1k",
+        "stepValue": 0.01
     },
     {
         "type": "inline_total",

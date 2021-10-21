@@ -13,6 +13,11 @@ const DisplayedNumber = ({ value, valueType }) => {
                 precision: 2,
                 decimalSeparator: ","
             });
+        } else if (valueType === "percent") {
+            displayedNumber = millify(numeral, {
+                precision: 2,
+                decimalSeparator: "."
+            });
         } else if (valueType === "dollar") {
             displayedNumber = `$${millify(numeral, {
                 precision: 1,

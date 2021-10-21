@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from "react";
 
-const Navigation = ({ dataSheets, text, currentPage, setCurrentPage, selectedSheet, setSelectedSheet }) => {
+const Navigation = ({ dataSheets, text, currentPage, setCurrentPage, selectedSheet, setSelectedSheets }) => {
 
     useEffect(() => {
         document.body.addEventListener("click", toggleClosed, true);
@@ -10,15 +10,6 @@ const Navigation = ({ dataSheets, text, currentPage, setCurrentPage, selectedShe
     // @TODO text can pass navigation link button title
 
     const [opened, setOpened] = useState(false);
-
-    if (!dataSheets) return null;
-
-    const sheetGids = dataSheets.map((sheet) => {
-        return {
-            gid: sheet.gid,
-            title: sheet.title
-        };
-    })
 
     function setOverlay(name) {
         if (currentPage === name) {
@@ -29,11 +20,11 @@ const Navigation = ({ dataSheets, text, currentPage, setCurrentPage, selectedShe
     }
 
     function toggleSheet(e) {
-        const ele = e.target.children[0];
+        const ele = e.target.children[0]; // Note this is applied at the input wrapper, not the input itself
         const value = ele.value;
-        console.log(ele, value);
-        ele.checked = true;
-        // setSelectedSheet(value);
+        // ele.checked = !ele.checked;
+        console.log(ele.checked);
+        setSelectedSheets(value, !ele.checked);
     }
 
     function toggleMenu(e) {
@@ -53,9 +44,9 @@ const Navigation = ({ dataSheets, text, currentPage, setCurrentPage, selectedShe
                 <div className="nav-toggle" onClick={toggleMenu}>Toggle Variables {!opened ? '▼' : '▲'}</div>
 
                 <div className={`checkbox-dropdown ${opened ? 'opened' : ''}`} style={{ height: !opened ? 0 : 350 }}>
-                    {sheetGids.map((sheet) => (
+                    {dataSheets && dataSheets.map((sheet) => (
                         <div key={sheet.gid} className="checkbox-toggle" onClick={toggleSheet}>
-                            <input type="checkbox" value={sheet.gid} />
+                            <input type="checkbox" checked={sheet.active} value={sheet.gid} />
                             {sheet.title}
                         </div>
                     ))}

@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import InputArea from './InputArea';
 import SheetTotals from './SheetTotals';
 
-const DataSheet = ({ setDataSheets, selectedSheet, dataSheet }) => {
+const DataSheet = ({ setDataSheets, dataSheet }) => {
 
     // console.log("DataSheet", dataSheet);
     // Example object which has been transformed in App.js 
@@ -13,10 +13,8 @@ const DataSheet = ({ setDataSheets, selectedSheet, dataSheet }) => {
     // rows: [{ … }]
     // title: "Lost Productivity
 
-    const isSelected = parseFloat(selectedSheet) === dataSheet.gid;
-
     return (
-        <div className={`DataSheet ${isSelected ? 'Selected' : ''}`}>
+        <div className={`DataSheet ${dataSheet.active ? 'Selected' : ''}`}>
             <div className="container">
                 <h2>{dataSheet.title || "..."}</h2>
                 {dataSheet && dataSheet.fields ?

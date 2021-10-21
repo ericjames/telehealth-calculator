@@ -13,12 +13,11 @@ export default {
         rowIndexOfColumnIds: 2,
     },
 
-    initialSheetGid: 1211509035,
-
     // This essentially represents the State model for the entire App
     setupDataSheets: [
         {
             gid: 1631211154,
+            active: false,
             readCellRange: 'A1:Z15', // Careful data could be beyond this range
 
             id: "avoidablenoshows",
@@ -38,6 +37,7 @@ export default {
 
         {
             gid: 1029269315,
+            active: false,
             readCellRange: 'A1:Z15', // Careful data could be beyond this range
 
             id: "prevadm",
@@ -58,6 +58,7 @@ export default {
 
         {
             gid: 1934186887,
+            active: false,
             readCellRange: 'A1:Z15', // Careful data could be beyond this range
 
             id: "prevreadm",
@@ -78,6 +79,7 @@ export default {
 
         {
             gid: 1211509035,
+            active: true,
             readCellRange: 'A1:Z15', // Careful data could be beyond this range
 
             id: "prevervisits",
@@ -97,6 +99,7 @@ export default {
 
         {
             gid: 1657140223,
+            active: false,
             readCellRange: 'A1:Z15', // Careful data could be beyond this range
 
             id: "lostprod",
@@ -117,6 +120,7 @@ export default {
 
         {
             gid: 2094512645,
+            active: false,
             readCellRange: 'A1:Z15', // Careful data could be beyond this range
 
             id: "atc",

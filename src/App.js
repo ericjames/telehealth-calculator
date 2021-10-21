@@ -16,8 +16,6 @@ function App() {
   const [text, setText] = useState(null);
   const [currentPage, setCurrentPage] = useState('home');
 
-  const [selectedSheet, setSelectedSheet] = useState(config.initialSheetGid);
-
   useEffect(() => {
     getGoogleData();
   }, [])
@@ -86,46 +84,6 @@ function App() {
     setDataSheets(dataSheets);
   }
 
-  async function getGoogleSpreadsheetRows(gid, rowIndexOfColumnIds, cellRange) {
-    const gSheet = doc.sheetsById[gid];
-    const gSheetRows = await gSheet.getCellsInRange(cellRange); // This will grab everything after first row
-    // Critical model change, convert each Row into an Object { columnId: data }
-    const cellIds = gSheetRows[rowIndexOfColumnIds - 1];
-    const rows = gSheetRows.map((row) => {
-      const rowModel = {};
-      row.forEach((value, i) => {
-        rowModel[cellIds[i]] = value;
-      });
-      return rowModel;
-    });
-    return rows;
-  }
-
-  async function getGoogleSpreadsheetColumns(gid, rowIndexOfColumnIds, cellRange) {
-    const gSheet = doc.sheetsById[gid];
-    const gSheetRows = await gSheet.getCellsInRange(cellRange); // This will grab everything after first row
-
-    // console.log(gSheetRows); return;
-
-    const columnIds = gSheetRows[rowIndexOfColumnIds - 1];
-
-    const columns = columnIds.map((id) => {
-      return { columnId: id };
-    });
-
-    const rowIdIndex = 0;
-    gSheetRows.forEach((row, i) => {
-      const rowId = row[rowIdIndex];
-      if (!rowId) return;
-      row.forEach((cellValue, rowIndex) => {
-        if (rowIndex > rowIdIndex) {
-          columns[rowIndex][rowId] = cellValue;
-        }
-      })
-    });
-
-    return columns;
-  }
 
   // Merges google data into the config sheet model
   // @FUTURE possibly move into AppWithData as useEffect if data will constantly change
@@ -155,10 +113,8 @@ function App() {
     // Setup final merged sheet
     const newSheet = {
       index, // Used for updating this parent state in child components
-      id: sheet.id,
-      gid: sheet.gid,
-      title: sheet.title,
       fields, // This is synonymous with columns of the spreadsheet
+      ...sheet // Important, ingest all config values
     };
 
     // Set the initial value data to override default sheet config fields
@@ -191,7 +147,18 @@ function App() {
     return newSheet;
   }
 
-  console.log(text);
+  // console.log(text);
+
+  function setSelectedSheets(gid, active) {
+    // console.log('setSelectedSheets', gid, active);
+    const newDataSheets = dataSheets.map((sheet) => {
+      if (sheet.gid === parseFloat(gid)) {
+        sheet.active = active;
+      }
+      return sheet;
+    });
+    setDataSheets(newDataSheets);
+  }
 
   return (
     <div className="App">
@@ -203,13 +170,13 @@ function App() {
         </div>
       </header>
 
-      <Navigation text={text} dataSheets={dataSheets} currentPage={currentPage} setCurrentPage={setCurrentPage} selectedSheet={selectedSheet} setSelectedSheet={setSelectedSheet} />
+      <Navigation text={text} dataSheets={dataSheets} currentPage={currentPage} setCurrentPage={setCurrentPage} setSelectedSheets={setSelectedSheets} />
 
       <div className="Front" style={{ opacity: currentPage === 'home' ? 1 : 0.2 }}>
 
         {!dataSheets ? <div className="Loading">Loading...</div> : null}
 
-        <AppWithData text={text} selectedSheet={selectedSheet} dataSheets={dataSheets} setDataSheets={setDataSheets} setCurrentPage={setCurrentPage} />
+        <AppWithData text={text} dataSheets={dataSheets} setDataSheets={setDataSheets} setCurrentPage={setCurrentPage} />
       </div>
 
       <Overlay id="about" title={text && text.aboutTitle} text={text && text.aboutText} currentPage={currentPage} setCurrentPage={setCurrentPage} />
@@ -221,3 +188,48 @@ function App() {
 }
 
 export default App;
+
+
+
+async function getGoogleSpreadsheetRows(gid, rowIndexOfColumnIds, cellRange) {
+  const gSheet = doc.sheetsById[gid];
+  const gSheetRows = await gSheet.getCellsInRange(cellRange); // This will grab everything after first row
+  // Critical model change, convert each Row into an Object { columnId: data }
+  const cellIds = gSheetRows[rowIndexOfColumnIds - 1];
+  const rows = gSheetRows.map((row) => {
+    const rowModel = {};
+    row.forEach((value, i) => {
+      rowModel[cellIds[i]] = value;
+    });
+    return rowModel;
+  });
+  return rows;
+}
+
+
+
+async function getGoogleSpreadsheetColumns(gid, rowIndexOfColumnIds, cellRange) {
+  const gSheet = doc.sheetsById[gid];
+  const gSheetRows = await gSheet.getCellsInRange(cellRange); // This will grab everything after first row
+
+  // console.log(gSheetRows); return;
+
+  const columnIds = gSheetRows[rowIndexOfColumnIds - 1];
+
+  const columns = columnIds.map((id) => {
+    return { columnId: id };
+  });
+
+  const rowIdIndex = 0;
+  gSheetRows.forEach((row, i) => {
+    const rowId = row[rowIdIndex];
+    if (!rowId) return;
+    row.forEach((cellValue, rowIndex) => {
+      if (rowIndex > rowIdIndex) {
+        columns[rowIndex][rowId] = cellValue;
+      }
+    })
+  });
+
+  return columns;
+}

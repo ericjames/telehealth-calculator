@@ -5,7 +5,7 @@ import TotalsBanner from './Footer/TotalsBanner.js';
 
 import config from './config.js';
 
-const AppWithData = ({ text, dataSheets, setDataSheets, selectedSheet }) => {
+const AppWithData = ({ text, dataSheets, setDataSheets }) => {
 
     const [dataSheetsWithTotals, setDataSheetsWithTotals] = useState(null);
 
@@ -99,7 +99,7 @@ const AppWithData = ({ text, dataSheets, setDataSheets, selectedSheet }) => {
         <div className="AppWithData">
 
             {dataSheets && dataSheets.map((sheet) => {
-                return <DataSheet selectedSheet={selectedSheet} key={sheet.id} dataSheet={sheet} setDataSheets={setDataSheets} />
+                return <DataSheet key={sheet.id} dataSheet={sheet} setDataSheets={setDataSheets} />
             })}
 
             <TotalsBanner text={text} dataSheets={dataSheetsWithTotals} />

@@ -53,7 +53,7 @@ const TotalsBanner = ({ dataSheets, text }) => {
                 <header><h2>{text && text.bannerTitle}</h2></header>
 
                 <div className="pure-g">
-                    <div className="pure-u-1-2 total-set">
+                    <div className="pure-u-1 pure-u-md-1-2 total-set">
 
                         <h3>Low</h3>
 
@@ -64,7 +64,7 @@ const TotalsBanner = ({ dataSheets, text }) => {
                             </div>
                         ))}
                     </div>
-                    <div className="pure-u-1-2 total-set">
+                    <div className="pure-u-1 pure-u-md-1-2 total-set">
 
                         <h3>High</h3>
 

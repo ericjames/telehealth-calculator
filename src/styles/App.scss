@@ -39,43 +39,6 @@
     }
 }
 
-.dismiss {
-    float: right;
-    padding: 0.5em;
-    border-radius: 2em;
-    border: 1px solid #888;
-    width: 2.5em;
-    height: 2.5em;
-    font-size: 1.2em;
-    cursor: pointer;
-    &:hover {
-        background: #aaa;
-    }
-}
-
-.DataSheet {
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
-    .container {
-        border-radius: 1.5em;
-        background: #fff;
-        box-shadow: 0 0.5em 2em #ddd;
-        margin: 2em;
-        padding: 0.5em 2em;
-    }
-    transition: max-height 350ms linear;
-    max-height: 0px;
-    &.Selected {
-        max-height: 1000px;
-    }
-}
-
-.InputArea {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
 
 .OutputArea {
     position: fixed;

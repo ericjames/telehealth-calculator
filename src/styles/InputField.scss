@@ -1,6 +1,6 @@
 .InputField {
     flex: 0.1 1 12%;
-    min-width: 130px;
+    min-width: 170px;
     margin-right: 0.5em;
 
     display: flex;
@@ -8,6 +8,7 @@
 
     label {
         flex: 0 1 70%;
+        padding-right: 2em;
         color: #777;
         font-weight: 500;
         position: relative;

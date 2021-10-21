@@ -23,4 +23,18 @@
         font-size: 1.2em;
         margin-bottom: 1em;
     }
+
+    .dismiss {
+        float: right;
+        padding: 0.5em;
+        border-radius: 2em;
+        border: 1px solid #888;
+        width: 2.5em;
+        height: 2.5em;
+        font-size: 1.2em;
+        cursor: pointer;
+        &:hover {
+            background: #aaa;
+        }
+    }
 }

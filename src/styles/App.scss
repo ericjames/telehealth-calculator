@@ -28,47 +28,6 @@
     min-height: 55vh;
 }
 
-.navigation {
-    text-align: center;
-
-    button {
-        padding: 0.5em 1em 0.5em 1em;
-        font: inherit;
-        font-size: 1.2em;
-        font-weight: 600;
-        cursor: pointer;
-        border: none;
-        color: #497175;
-        margin: 1em;
-        min-width: 200px;
-        transition: ease-in background-color 250ms;
-        border: 1px solid #497175;
-        border-radius: 2em;
-        background: none;
-        &:hover {
-            color: #111;
-            background: #eee;
-        }
-    }
-
-    .selector {
-        padding: 0.5em 1em 0.5em 1em;
-        font: inherit;
-        font-size: 1.2em;
-        font-weight: 600;
-        cursor: pointer;
-        border: 1px solid #497175;
-        border-radius: 2em;
-        color: #497175;
-        background: none;
-        transition: ease-in background-color 250ms;
-        &:hover {
-            color: #111;
-            background: #eee;
-        }
-    }
-}
-
 .main-header {
     text-align: center;
     padding: 3em 0 3em 0;

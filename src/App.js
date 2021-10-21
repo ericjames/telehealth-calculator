@@ -50,7 +50,7 @@ function App() {
       }
     });
     // console.log("setText", newSheet);
-    localStorage.setItem(sheet.gid, JSON.stringify(newSheet));
+    // localStorage.setItem(sheet.gid, JSON.stringify(newSheet));
 
     // if (!localStorage.getItem(sheet.gid)) {
 
@@ -69,7 +69,7 @@ function App() {
       let newSheet = null;
 
       newSheet = await getNewDataSheet(setupSheet, i)
-      localStorage.setItem(setupSheet.gid, JSON.stringify(newSheet));
+      // localStorage.setItem(setupSheet.gid, JSON.stringify(newSheet));
 
       // if (!localStorage.getItem(setupSheet.gid)) {
       //   console.log("Get New Sheet");
@@ -203,7 +203,7 @@ function App() {
         </div>
       </header>
 
-      <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage} selectedSheet={selectedSheet} setSelectedSheet={setSelectedSheet} />
+      <Navigation text={text} dataSheets={dataSheets} currentPage={currentPage} setCurrentPage={setCurrentPage} selectedSheet={selectedSheet} setSelectedSheet={setSelectedSheet} />
 
       <div className="Front" style={{ opacity: currentPage === 'home' ? 1 : 0.2 }}>
 

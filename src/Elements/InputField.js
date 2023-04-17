@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import DisplayedNumber from './DisplayedNumber';
 import HelpText from './HelpText';
+import NumericFormat from 'react-number-format';
 
 const InputField = ({ setDataSheets, dataSheet, fieldIndex }) => {
 
@@ -43,7 +44,9 @@ const InputField = ({ setDataSheets, dataSheet, fieldIndex }) => {
         <div className={`InputField ${field.type}`} style={style}>
             <label>{field.name} <HelpText field={field} /></label>
             <div className="field">
-                {field.type === "editable" ? <input type={field.fieldType} min={field.minValue || 0} max={field.maxValue || 1000000} step={field.stepValue || 1} maxLength={maxLength} value={field.value} onChange={onChange} disabled={field.type === "locked" || field.type === "inline_total"} /> : null}
+                {field.type === "editable" && field.fieldType === "text" ? <input comma={field.comma} type={field.fieldType} min={field.minValue || 0} max={field.maxValue || 1000000} step={field.stepValue || 1} maxLength={maxLength} value={field.value} onChange={onChange} disabled={field.type === "locked" || field.type === "inline_total"} /> : null}
+                {field.type === "editable" && field.fieldType === "number" ? <NumericFormat thousandSeparator="," min={field.minValue || 0} max={field.maxValue || 1000000} step={field.stepValue || 1} maxLength={maxLength} value={field.value} onChange={onChange} disabled={field.type === "locked" || field.type === "inline_total"} /> : null}
+
                 {field.type === "editable" ? <button className="revert" title="Revert" onClick={revertValue}>⟳</button> : null}
                 {field.type === "locked" || field.type === "inline_total" ? <DisplayedNumber value={field.value} valueType={field.valueType} /> : null}
             </div>

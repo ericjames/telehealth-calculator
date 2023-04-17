@@ -1,9 +1,9 @@
+import avoidablenoshows from './config/fields-avoidablenoshows.json';
+import avoidabletrans from './config/fields-avoidable-trans.json';
+import ervisits from './config/fields-preventable-ervisits.json';
 import fieldsLostProductivity from './config/fields-lostprod.json';
 import fieldsPreventableAdmissions from './config/fields-prevad.json';
-import avoidablenoshows from './config/fields-avoidablenoshows.json';
 import prevReadm from './config/fields-preventable-readmissions.json';
-import ervisits from './config/fields-preventable-ervisits.json';
-import avoidabletrans from './config/fields-avoidable-trans.json';
 
 export default {
 
@@ -15,26 +15,26 @@ export default {
 
     // This essentially represents the State model for the entire App
     setupDataSheets: [
-        {
-            gid: 1631211154,
-            active: false,
-            readCellRange: 'A1:Z15', // Careful data could be beyond this range
+        // {
+        //     gid: 1631211154,
+        //     active: false,
+        //     readCellRange: 'A1:Z15', // Careful data could be beyond this range
 
-            id: "avoidablenoshows",
-            title: "Avoidable No Shows",
-            fields: avoidablenoshows,
-            rows: [], // for reference 
+        //     id: "avoidablenoshows",
+        //     title: "Avoidable No Shows",
+        //     fields: avoidablenoshows,
+        //     rows: [], // for reference 
 
-            // Actual row number in sheet
-            sheetTitleRow: 1,
-            rowIndexOfColumnIds: 2,
-            fieldTypeRow: 3,
-            titleRow: 4,
-            subtitleRow: 5,
-            helpTextRow: 6,
-            formulaRow: 7,
-            initialValueRow: 8,
-        },
+        //     // Actual row number in sheet
+        //     sheetTitleRow: 1,
+        //     rowIndexOfColumnIds: 2,
+        //     fieldTypeRow: 3,
+        //     titleRow: 4,
+        //     subtitleRow: 5,
+        //     helpTextRow: 6,
+        //     formulaRow: 7,
+        //     initialValueRow: 8,
+        // },
 
         {
             gid: 1029269315,

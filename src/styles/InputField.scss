@@ -1,10 +1,21 @@
 .InputField {
     flex: 0.1 1 12%;
     min-width: 170px;
-    margin-right: 0.5em;
+    padding: 0.5em;
+    border-radius: 4px;
+    margin-bottom: 1em;
 
     display: flex;
     flex-direction: column;
+
+    &.group-low {
+        background: #E0EBEB;
+    }
+
+    &.group-high {
+        background: #A4C6C6;
+    }
+
 
     label {
         flex: 0 1 70%;
@@ -16,7 +27,7 @@
 
     .field {
         position: relative;
-        margin: 1em 0 2em 0;
+        margin: 1em 0 1em 0;
 
         display: flex;
 
@@ -37,8 +48,8 @@
             width: 100%;
             text-align: right;
             font-size: 1.2em;
-            padding: 0 1em 0.5em 0;
-            border-bottom: 1px solid #ccc;
+            padding: 0.7em 1em 0.5em 0;
+            border-top: 1px solid #ccc;
             font-family: Arial, Verdana;
         }
     }

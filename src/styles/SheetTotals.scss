@@ -1,10 +1,12 @@
 .SheetTotals {
     margin-top: 2em;
     text-align: center;
+
     h3 {
         border-bottom: 1px solid #ccc;
         padding-bottom: 0.5em;
     }
+
     .SheetTotals-inner {
         // display: flex;
         // flex-wrap: wrap;
@@ -14,6 +16,15 @@
 
     .ResultGroup {
         margin-bottom: 1em;
+
+
+        &.group-low {
+            background: #E0EBEB;
+        }
+
+        &.group-high {
+            background: #A4C6C6;
+        }
 
         .ResultTotals {
             display: flex;
@@ -37,6 +48,7 @@
                 font-size: 1.2em;
                 font-weight: 300;
             }
+
             .number {
                 display: block;
                 flex: 0 1 25%;

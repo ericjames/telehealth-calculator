@@ -8,7 +8,7 @@ const SheetTotalsLostProductivity = ({ fields }) => {
         <div className="pure-g">
 
             <div className="pure-u-1 pure-u-md-1-2">
-                <div className="ResultGroup">
+                <div className="ResultGroup group-low">
                     <h4>{fields[11].name}</h4>
                     <div className="ResultTotals">
                         <Result field={fields[11]} />
@@ -20,7 +20,7 @@ const SheetTotalsLostProductivity = ({ fields }) => {
             </div>
 
             <div className="pure-u-1 pure-u-md-1-2">
-                <div className="ResultGroup">
+                <div className="ResultGroup group-high">
                     <h4>{fields[12].name}</h4>
                     <div className="ResultTotals">
                         <Result field={fields[12]} />

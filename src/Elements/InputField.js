@@ -4,9 +4,9 @@ import DisplayedNumber from './DisplayedNumber';
 import HelpText from './HelpText';
 import NumericFormat from 'react-number-format';
 
-const InputField = ({ setDataSheets, dataSheet, fieldIndex }) => {
+const InputField = ({ setDataSheets, dataSheet, fieldIndex, field }) => {
 
-    const field = dataSheet.fields[fieldIndex];
+    // const field = dataSheet.fields[fieldIndex];
 
     const [originalValue, setOriginalValue] = useState(field.value);
 
@@ -46,7 +46,7 @@ const InputField = ({ setDataSheets, dataSheet, fieldIndex }) => {
     }
 
     return (
-        <div className={`InputField ${field.type}`} style={style}>
+        <div className={`InputField ${field.type} ${field.groupId ? 'group-' + field.groupId : ''}`} style={style}>
             <label>{field.name} <HelpText field={field} /></label>
             <div className="field">
                 {field.type === "editable" && field.fieldType === "text" ? <input comma={field.comma} type={field.fieldType} min={field.minValue || 0} max={field.maxValue || 1000000} step={field.stepValue || 1} maxLength={maxLength} value={field.value} onChange={onChange} disabled={field.type === "locked" || field.type === "inline_total"} /> : null}

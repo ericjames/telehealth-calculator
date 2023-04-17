@@ -10,7 +10,7 @@
         "columnId": "annual_admissions"
     },
     {
-        "type": "editable",
+        "type": "hidden",
         "fieldType": "number",
         "columnId": "30_day_readmission_rate",
         "stepValue": 0.001
@@ -43,21 +43,21 @@
     {
         "type": "total_both",
         "valueType": "dollar",
-        "columnId": "twenty_five_percent_annual_savings"
+        "columnId": "ten_percent_annual_savings"
     },
     {
         "type": "total_both",
         "valueType": "dollar",
-        "columnId": "twenty_five_percent_five_year_savings"
+        "columnId": "ten_percent_five_year_savings"
     },
     {
         "type": "total_both",
         "valueType": "dollar",
-        "columnId": "twenty_five_percent_ten_year_savings"
+        "columnId": "ten_percent_ten_year_savings"
     },
     {
         "type": "total_both",
         "valueType": "dollar",
-        "columnId": "twenty_five_percent_twenty-year_savings"
+        "columnId": "ten_percent_twenty-year_savings"
     }
 ]

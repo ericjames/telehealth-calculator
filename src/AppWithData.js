@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 
 import DataSheet from './Content/DataSheet.js';
-import { Exception } from 'sass';
 import TotalsBanner from './Footer/TotalsBanner.js';
 
 const AppWithData = ({ text, dataSheets, setDataSheets }) => {

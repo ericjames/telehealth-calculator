@@ -1,4 +1,3 @@
-
 import DisplayedNumber from '../Elements/DisplayedNumber.js';
 
 const TotalsBanner = ({ dataSheets, text }) => {

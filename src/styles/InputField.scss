@@ -30,6 +30,7 @@
             text-align: right;
             font-family: Arial, Verdana;
         }
+
         // Sometimes input fields will show totals
         .number {
             flex: 1 1 auto;
@@ -64,20 +65,23 @@
 
     button.revert {
         border-radius: 1em;
-        width: 2em;
+        width: 1.5em;
+        height: 1.5em;
         cursor: pointer;
         background: none;
         color: #888;
         border: none;
         position: absolute;
-        top: 0.5em;
-        left: 0.5em;
-        padding: 0.4em;
+        top: 2px;
+        left: 2px;
         overflow: hidden;
+        font-size: 2em;
+
         &:hover {
             background: #aaa;
             color: #fff;
         }
+
         &:active {
             background: #888;
             color: #fff;

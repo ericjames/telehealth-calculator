@@ -44,7 +44,7 @@ const InputField = ({ setDataSheets, dataSheet, fieldIndex }) => {
             <label>{field.name} <HelpText field={field} /></label>
             <div className="field">
                 {field.type === "editable" ? <input type={field.fieldType} min={field.minValue || 0} max={field.maxValue || 1000000} step={field.stepValue || 1} maxLength={maxLength} value={field.value} onChange={onChange} disabled={field.type === "locked" || field.type === "inline_total"} /> : null}
-                {field.type === "editable" ? <button className="revert" onClick={revertValue}>⟳</button> : null}
+                {field.type === "editable" ? <button className="revert" title="Revert" onClick={revertValue}>⟳</button> : null}
                 {field.type === "locked" || field.type === "inline_total" ? <DisplayedNumber value={field.value} valueType={field.valueType} /> : null}
             </div>
             {/* {field.value} {field.valueType} */}

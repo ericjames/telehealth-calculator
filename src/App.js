@@ -5,6 +5,8 @@ import { GoogleSpreadsheet } from 'google-spreadsheet';
 import Navigation from './Elements/Navigation.js';
 import Overlay from './Overlay.js';
 import config from './config.js';
+import ilsrLogo from './assets/ilsr-logo-horizontal.png';
+import srbwiLogo from './assets/srbwi-logo.png';
 
 const doc = new GoogleSpreadsheet(process.env.REACT_APP_GOOGLE_SHEET_ID);
 
@@ -171,21 +173,35 @@ function App() {
   return (
     <div className="App">
 
-      <header className="main-header">
-        <div className="container">
-          <h1>{text && (text.headerTitle || "...")}</h1>
-          <span>{text && (text.headerText || "...")}</span>
+      <div className="wrapper">
+
+        <header className="main-header">
+          <div className="container">
+            <h1>{text && (text.headerTitle || "...")}</h1>
+            <span>{text && (text.headerText || "...")}</span>
+          </div>
+        </header>
+
+        <Navigation text={text} dataSheets={dataSheets} currentPage={currentPage} setCurrentPage={setCurrentPage} setSelectedSheets={setSelectedSheets} />
+
+        <div className="Front" style={{ opacity: currentPage === 'home' ? 1 : 0.2 }}>
+
+          {!dataSheets ? <div className="Loading">Loading...</div> : null}
+
+          <AppWithData text={text} dataSheets={dataSheets} setDataSheets={setDataSheets} setCurrentPage={setCurrentPage} />
+
         </div>
-      </header>
-
-      <Navigation text={text} dataSheets={dataSheets} currentPage={currentPage} setCurrentPage={setCurrentPage} setSelectedSheets={setSelectedSheets} />
-
-      <div className="Front" style={{ opacity: currentPage === 'home' ? 1 : 0.2 }}>
-
-        {!dataSheets ? <div className="Loading">Loading...</div> : null}
-
-        <AppWithData text={text} dataSheets={dataSheets} setDataSheets={setDataSheets} setCurrentPage={setCurrentPage} />
       </div>
+
+      <footer className="Footer">
+        <div className="left">
+          A Project of the Institute for Local Self-Reliance, with support from the Southern Rural Black Women's Initiative
+        </div>
+        <div className="right">
+          <a href="https://ilsr.org"><img src={ilsrLogo} alt="ILSR" /></a>
+          <a href="https://srbwi.org"><img src={srbwiLogo} alt="SRBWI" /></a>
+        </div>
+      </footer>
 
       <Overlay id="about" title={text && text.aboutTitle} text={text && text.aboutText} currentPage={currentPage} setCurrentPage={setCurrentPage} />
 

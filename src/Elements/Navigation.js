@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 
 const Navigation = ({ dataSheets, text, currentPage, setCurrentPage, selectedSheet, setSelectedSheets }) => {
@@ -47,7 +46,7 @@ const Navigation = ({ dataSheets, text, currentPage, setCurrentPage, selectedShe
                     {dataSheets && dataSheets.map((sheet) => (
                         <div key={sheet.gid} className="checkbox-toggle" onClick={toggleSheet}>
                             <input type="checkbox" checked={sheet.active} readOnly value={sheet.gid} />
-                            {sheet.title}
+                            {sheet.sheetTitle}
                         </div>
                     ))}
                 </div>
@@ -59,7 +58,7 @@ const Navigation = ({ dataSheets, text, currentPage, setCurrentPage, selectedShe
             <div className="nav-separator">
                 <button className="nav-toggle" onClick={() => setOverlay('sources')}>Sources</button>
             </div>
-        </nav >
+        </nav>
     )
 };
 

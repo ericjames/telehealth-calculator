@@ -1,6 +1,40 @@
 .App {
-    background: rgb(248, 251, 255);
-    background: linear-gradient(0deg, rgba(248, 251, 255, 1) 0%, rgba(232, 245, 252, 1) 100%);
+    .wrapper {
+        background: rgb(224, 233, 230);
+        background: linear-gradient(0deg, rgba(224, 233, 230, 1) 0%, rgba(255, 255, 255, 1) 59%, rgba(180, 205, 205, 1) 100%);
+        border-radius: 0 0 5em 5em;
+    }
+}
+
+.Footer {
+    font-size: 1.2em;
+    color: #555;
+
+    padding: 1em;
+    max-width: 1000px;
+    margin: auto;
+    margin-bottom: 230px;
+
+    display: flex;
+
+    div {
+        flex: 0 1 100%;
+    }
+
+    .left {
+        display: flex;
+        align-items: center;
+    }
+
+    .right {
+        text-align: right;
+        display: flex;
+        align-items: center;
+    }
+
+    img {
+        float: right;
+    }
 }
 
 .Loading {
@@ -22,16 +56,17 @@
 .AppWithData {
     max-width: 1400px;
     margin: auto;
-    padding-bottom: 250px;
+    padding-bottom: 20px;
     // background: #E2ccF5;
     border-radius: 1em;
-    min-height: 55vh;
+    min-height: 48vh;
 }
 
 .main-header {
     text-align: center;
     padding: 3em 0 3em 0;
     display: block;
+
     .container {
         margin: auto;
         max-width: 1000px;

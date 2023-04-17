@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import DataSheet from './Content/DataSheet.js';
+import { Exception } from 'sass';
 import TotalsBanner from './Footer/TotalsBanner.js';
 
 const AppWithData = ({ text, dataSheets, setDataSheets }) => {
@@ -90,10 +91,18 @@ function getFieldTotalValue(fields, field) {
     }
     // console.log("STEP TWO", formulaString);
 
-    if (formulaString.includes('*') && !formulaString.includes('/') && !formulaString.includes('+')) {
-        formulaString = formulaString.replace('(', '').replace(')', '');
-        const values = formulaString.split('*');
-        formulaString = values.reduce((a, b) => a * parseFloat(b), 1);
+    if (typeof formulaString === 'string') {
+        // Just multiplication for all values
+        if (formulaString.includes('*') && !formulaString.includes('/') && !formulaString.includes('+')) {
+            formulaString = formulaString.replace('(', '').replace(')', '');
+            const values = formulaString.split('*');
+            formulaString = values.reduce((a, b) => a * parseFloat(b), 1);
+        } else if (formulaString.includes('/') && !formulaString.includes('*') && !formulaString.includes('+')) {
+            // Just division 1 time
+            const values = formulaString.split('/');
+            formulaString = parseFloat(values[0]) / parseFloat(values[1]);
+            // console.log("formulaString", values, formulaString);
+        }
     }
 
     // console.log("STEP THREE", formulaString);
@@ -102,6 +111,9 @@ function getFieldTotalValue(fields, field) {
     //     totalValue = totalValue.toFixed(2);
     // }
 
-    // console.log(totalValue, values);
+    if (typeof formulaString !== 'number') {
+        console.error("A formula must convert to a number, ended up with " + formulaString);
+    }
+    // console.log(formulaString);
     return formulaString;
 }

@@ -1,5 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
-
+import { useEffect, useRef, useState } from 'react';
 
 import InputArea from './InputArea';
 import SheetTotals from './SheetTotals';
@@ -12,6 +11,8 @@ const DataSheet = ({ setDataSheets, dataSheet }) => {
     // gid: 1657140223
     // rows: [{ … }]
     // title: "Lost Productivity
+
+    console.log(dataSheet);
 
     return (
         <div className={`DataSheet ${dataSheet.active ? 'Selected' : ''}`}>

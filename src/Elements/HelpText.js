@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
-
-const HelpText = ({ field }) => {
+const HelpText = ({ text, style }) => {
 
     const [visible, setVisible] = useState(null);
 
@@ -14,12 +13,12 @@ const HelpText = ({ field }) => {
         setVisible(false);
     }
 
-    if (field.helpText && field.helpText.length > 0) {
+    if (text) {
         return (
-            <div className="HelpText">
+            <div className="HelpText" style={style}>
                 <button onMouseOver={showHelpText} onMouseOut={leaveHelp}>i</button>
                 <div className={`text ${visible ? 'visible' : ''}`}>
-                    {field.helpText}
+                    {text}
                 </div>
             </div>
         );

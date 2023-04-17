@@ -21,7 +21,7 @@ export default {
         //     readCellRange: 'A1:Z15', // Careful data could be beyond this range
 
         //     id: "avoidablenoshows",
-        //     title: "Avoidable No Shows",
+        //     sheetTitle: "Avoidable No Shows",
         //     fields: avoidablenoshows,
         //     rows: [], // for reference 
 
@@ -42,19 +42,20 @@ export default {
             readCellRange: 'A1:Z15', // Careful data could be beyond this range
 
             id: "prevadm",
-            title: "Preventable Admissions",
+            sheetTitle: "Preventable Admissions",
             fields: fieldsPreventableAdmissions,
             rows: [], // for reference 
 
             // Actual row number in sheet
             sheetTitleRow: 1,
-            rowIndexOfColumnIds: 2,
-            fieldTypeRow: 3,
-            titleRow: 4,
-            subtitleRow: 5,
-            helpTextRow: 6,
-            formulaRow: 7,
-            initialValueRow: 8,
+            sheetHelpTextRow: 2,
+            rowIndexOfColumnIds: 3,
+            fieldTypeRow: 4,
+            titleRow: 5,
+            subtitleRow: 6,
+            helpTextRow: 7,
+            formulaRow: 8,
+            initialValueRow: 9,
         },
 
 
@@ -64,19 +65,20 @@ export default {
             readCellRange: 'A1:Z15', // Careful data could be beyond this range
 
             id: "prevreadm",
-            title: "Preventable Readmissions",
+            sheetTitle: "Preventable Readmissions",
             fields: prevReadm,
             rows: [],// for reference 
 
             // Actual row number in sheet
             sheetTitleRow: 1,
-            rowIndexOfColumnIds: 2,
-            fieldTypeRow: 3,
-            titleRow: 4,
-            subtitleRow: 5,
-            helpTextRow: 6,
-            formulaRow: 7,
-            initialValueRow: 8,
+            sheetHelpTextRow: 2,
+            rowIndexOfColumnIds: 3,
+            fieldTypeRow: 4,
+            titleRow: 5,
+            subtitleRow: 6,
+            helpTextRow: 7,
+            formulaRow: 8,
+            initialValueRow: 9,
         },
 
 
@@ -86,19 +88,20 @@ export default {
             readCellRange: 'A1:Z15', // Careful data could be beyond this range
 
             id: "prevervisits",
-            title: "Preventable ER Visits",
+            sheetTitle: "Preventable ER Visits",
             fields: ervisits,
             rows: [],// for reference 
 
             // Actual row number in sheet
             sheetTitleRow: 1,
-            rowIndexOfColumnIds: 2,
-            fieldTypeRow: 3,
-            titleRow: 4,
-            subtitleRow: 5,
-            helpTextRow: 6,
-            formulaRow: 7,
-            initialValueRow: 8,
+            sheetHelpTextRow: 2,
+            rowIndexOfColumnIds: 3,
+            fieldTypeRow: 4,
+            titleRow: 5,
+            subtitleRow: 6,
+            helpTextRow: 7,
+            formulaRow: 8,
+            initialValueRow: 9,
         },
 
         {
@@ -107,19 +110,20 @@ export default {
             readCellRange: 'A1:Z15', // Careful data could be beyond this range
 
             id: "lostprod",
-            title: "Lost Productivity",
+            sheetTitle: "Lost Productivity",
             fields: fieldsLostProductivity,
             rows: [],// for reference 
 
             // Actual row number in sheet
             sheetTitleRow: 1,
-            rowIndexOfColumnIds: 2,
-            fieldTypeRow: 3,
-            titleRow: 4,
-            subtitleRow: 5,
-            helpTextRow: 6,
-            formulaRow: 7,
-            initialValueRow: 8,
+            sheetHelpTextRow: 2,
+            rowIndexOfColumnIds: 3,
+            fieldTypeRow: 4,
+            titleRow: 5,
+            subtitleRow: 6,
+            helpTextRow: 7,
+            formulaRow: 8,
+            initialValueRow: 9,
         },
 
 
@@ -129,22 +133,23 @@ export default {
             readCellRange: 'A1:Z15', // Careful data could be beyond this range
 
             id: "atc",
-            title: "Avoidable Tranportation Costs",
+            sheetTitle: "Avoidable Tranportation Costs",
             fields: avoidabletrans,
             rows: [],// for reference 
 
             // Actual row number in sheet
             sheetTitleRow: 1,
-            rowIndexOfColumnIds: 2,
-            fieldTypeRow: 3,
-            titleRow: 4,
-            subtitleRow: 5,
-            helpTextRow: 6,
-            formulaRow: 7,
-            initialValueRow: 8,
+            sheetHelpTextRow: 2,
+            rowIndexOfColumnIds: 3,
+            fieldTypeRow: 4,
+            titleRow: 5,
+            subtitleRow: 6,
+            helpTextRow: 7,
+            formulaRow: 8,
+            initialValueRow: 9,
         },
 
 
-        
+
     ]
 }

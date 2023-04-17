@@ -1,11 +1,9 @@
-import { useState, useEffect } from 'react';
-
-import { GoogleSpreadsheet } from 'google-spreadsheet';
+import { useEffect, useState } from 'react';
 
 import AppWithData from './AppWithData.js';
+import { GoogleSpreadsheet } from 'google-spreadsheet';
 import Navigation from './Elements/Navigation.js';
 import Overlay from './Overlay.js';
-
 import config from './config.js';
 
 const doc = new GoogleSpreadsheet(process.env.REACT_APP_GOOGLE_SHEET_ID);
@@ -96,6 +94,8 @@ function App() {
 
     // Separate out data rows, each one serves a different purpose
     const sheetTitleRow = rows[sheet.sheetTitleRow - indexOffset];
+    const sheetHelpTextRow = rows[sheet.sheetHelpTextRow - indexOffset];
+
     const fieldTypeRow = rows[sheet.fieldTypeRow - indexOffset];
     const titles = rows[sheet.titleRow - indexOffset];
     const subtitles = rows[sheet.subtitleRow - indexOffset];
@@ -113,11 +113,16 @@ function App() {
     const fields = sheet.fields;
 
     // Setup final merged sheet
+    // @TODO Just reuse the names in the spreadsheet to avoid confusion
+
     const newSheet = {
-      ...sheet, // Important, ingest all config values
+      ...sheet, // Default Config Values (they get overriden later)
+
       index, // Used for updating this parent state in child components
       fields, // This is synonymous with columns of the spreadsheet
-      title: Object.values(sheetTitleRow)[1] // @TODO The mapping assigns cols to the "title" row
+
+      sheetTitle: Object.values(sheetTitleRow)[1],
+      sheetHelpText: Object.values(sheetHelpTextRow)[1],
     };
 
     // Set the initial value data to override default sheet config fields

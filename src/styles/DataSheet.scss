@@ -2,6 +2,18 @@
     overflow: hidden;
     margin: 0;
     padding: 0;
+
+    header {
+        position: relative;
+        display: inline-block;
+        padding-right: 2.5em;
+        margin-top: 1em;
+
+        h2 {
+            margin-top: 0;
+        }
+    }
+
     .container {
         border-radius: 1.5em;
         background: #fff;
@@ -9,8 +21,10 @@
         margin: 2em;
         padding: 0.5em 2em;
     }
+
     transition: max-height 350ms linear;
     max-height: 0px;
+
     &.Selected {
         max-height: 1000px;
     }

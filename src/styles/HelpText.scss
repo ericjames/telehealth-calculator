@@ -14,21 +14,24 @@
         height: 1.5em;
         z-index: 50;
         cursor: help;
+
         &:hover {
             background: #eee;
         }
     }
+
     .text {
         position: absolute;
         z-index: 100;
         top: 2em;
-        left: 2em;
+        right: 1em;
         width: 200px;
         background: #fff;
         padding: 0.5em;
-        box-shadow: 0 0.5em 1em #aaa;
+        box-shadow: 0 0.2em 1em #aaa;
         border-radius: 1em;
         display: none;
+
         &.visible {
             display: block;
         }

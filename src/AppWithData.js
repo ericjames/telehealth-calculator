@@ -49,10 +49,9 @@ export default AppWithData;
 
 function getFieldTotalValue(fields, field) {
 
-    let formulaString = field.formula.replace(',', '');
+    let formulaString = field.formula.replaceAll(',', '');
 
-    // console.log("START", formulaString);
-
+    // Replace all variables with their values
     const variables = formulaString.match(/[\d\w_\s]+/g); // Any variable ie 30_day_rate
     variables.forEach((piece) => {
         // Part of formula is either columnId ref or just a number
@@ -61,17 +60,19 @@ function getFieldTotalValue(fields, field) {
             for (let field of fields) {
                 if (field.columnId === piece.trim()) {
                     // const sanitizedValue = field.value.replace(",", "");
-                    formulaString = formulaString.replace(piece, field.value);
+                    formulaString = formulaString.replaceAll(piece, field.value);
                     break;
                 }
             }
         }
     });
 
-    // console.log("STEP ONE", formulaString, variables);
+    // Sanitize
+    formulaString = formulaString.replaceAll(',', '');
 
     if (formulaString.includes('(')) {
-        const sets = formulaString.match(/\([\w\d\s\/\+\*]*\)*/g);
+        const sets = formulaString.match(/(\([\w\d.\*\/\+]*\))+/g);
+        // console.log("STEP ONE ()", formulaString, sets);
         sets.forEach((set) => {
             if (set.includes('/')) {
                 const compare = set.replace('(', '').replace(')', '').split('/');

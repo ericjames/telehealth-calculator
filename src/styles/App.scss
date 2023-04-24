@@ -30,10 +30,11 @@
         text-align: right;
         display: flex;
         align-items: center;
+        justify-content: space-evenly;
     }
 
     img {
-        float: right;
+        display: inline-block;
     }
 }
 

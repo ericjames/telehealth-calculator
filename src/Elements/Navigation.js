@@ -22,7 +22,7 @@ const Navigation = ({ dataSheets, text, currentPage, setCurrentPage, selectedShe
         const ele = e.target.children[0]; // Note this is applied at the input wrapper, not the input itself
         const value = ele.value;
         // ele.checked = !ele.checked;
-        console.log(ele.checked);
+        // console.log(ele.checked);
         setSelectedSheets(value, !ele.checked);
     }
 
@@ -57,6 +57,10 @@ const Navigation = ({ dataSheets, text, currentPage, setCurrentPage, selectedShe
             </div>
             <div className="nav-separator">
                 <button className="nav-toggle" onClick={() => setOverlay('sources')}>Sources</button>
+            </div>
+
+            <div className="nav-separator">
+                <button className="nav-toggle" onClick={() => window.print()}>Print this Report</button>
             </div>
         </nav>
     )

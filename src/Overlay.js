@@ -1,16 +1,23 @@
-
+import sanitizeHtml from 'sanitize-html'
 
 const Overlay = ({ id, currentPage, title, text, setCurrentPage }) => {
 
     function renderText() {
         if (!text) return null;
+        // console.log(text);
         let textArray = text.split(/^/gm);
         // console.log(textArray);
         if (textArray) {
             return textArray.map((line, i) => {
                 let textWithLinks = line.replace(/(https:\/\/[\w\d.\/-]*)/gi, '<a target="new" href="$1">$1</a>');
+                textWithLinks = line.replace(/^\n/gim, '<br />');
                 // console.log(textWithLinks);
-                return <p key={i} dangerouslySetInnerHTML={{ __html: textWithLinks }}></p>;
+
+                const clean = sanitizeHtml(textWithLinks, {
+                    allowedTags: ['b', 'br', 'a', 'p', 'em', 'strong'],
+                });
+
+                return <p key={i} dangerouslySetInnerHTML={{ __html: clean }}></p>;
             })
         }
         return <p>{text}</p>;

@@ -43,6 +43,7 @@
     {
         "type": "inline_total",
         "fieldType": "number",
+        "valueType": "dollar",
         "columnId": "total_annual_cost_driven_ER_admissions_readmissions"
     },
     {

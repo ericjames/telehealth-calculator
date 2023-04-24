@@ -1,22 +1,25 @@
 .TotalsBanner {
     position: fixed;
-    bottom: 2em;
+    bottom: 1em;
     left: 0;
     z-index: 100;
     width: 100%;
     height: auto;
     text-align: center;
     color: #6aa8ff;
+
     h2 {
         color: #fff;
         margin: 0 0 0.5em 0;
     }
+
     h3 {
         text-align: center;
         width: 95%;
         margin: 0 auto 0 auto;
         color: #6aa8ff;
     }
+
     .container {
         background: #477172;
         color: #eee;
@@ -24,26 +27,30 @@
         border-radius: 2em;
         max-width: 1350px;
         margin: auto;
-        padding: 1em 2em 2em 2em;
+        padding: 1em 1em 1em 1em;
     }
 
     .total-set {
         display: flex;
         align-items: center;
         justify-content: center;
+
         h3 {
             text-align: center;
             flex: 0 0 3em;
             color: #aaa;
         }
+
         .value {
             flex: 0 1 100%;
             border-right: 1px solid #aaa;
             padding-right: 0.5em;
             padding-left: 0.5em;
+
             &:last-child {
                 border: none;
             }
+
             .number {
                 color: #fff;
                 font-size: 1.6em;

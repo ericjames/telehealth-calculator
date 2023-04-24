@@ -5,6 +5,7 @@ import { GoogleSpreadsheet } from 'google-spreadsheet';
 import Navigation from './Elements/Navigation.js';
 import Overlay from './Overlay.js';
 import config from './config.js';
+import headerImage from './assets/header-image.png';
 import ilsrLogo from './assets/ilsr-logo-horizontal.png';
 import srbwiLogo from './assets/srbwi-logo.png';
 
@@ -55,6 +56,8 @@ function App() {
     // } else {
     //   newSheet = JSON.parse(localStorage.getItem(sheet.gid));
     // }
+
+    // console.log(newSheet);
 
     setText(newSheet);
   }
@@ -177,6 +180,7 @@ function App() {
 
         <header className="main-header">
           <div className="container">
+            <img className="header-image" src={headerImage} style={{ height: 100, width: 'auto' }} />
             <h1>{text && (text.headerTitle || "...")}</h1>
             <span>{text && (text.headerText || "...")}</span>
           </div>
@@ -198,8 +202,8 @@ function App() {
           A Project of the Institute for Local Self-Reliance, with support from the Southern Rural Black Women's Initiative
         </div>
         <div className="right">
-          <a href="https://ilsr.org"><img src={ilsrLogo} alt="ILSR" /></a>
-          <a href="https://srbwi.org"><img src={srbwiLogo} alt="SRBWI" /></a>
+          <a href="https://ilsr.org"><img src={ilsrLogo} style={{ height: '5em', width: 'auto' }} alt="ILSR" /></a>
+          <a href="https://srbwi.org"><img src={srbwiLogo} style={{ height: '9em', width: 'auto' }} alt="SRBWI" /></a>
         </div>
       </footer>
 

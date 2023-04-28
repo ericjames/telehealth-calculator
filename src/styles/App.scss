@@ -13,7 +13,7 @@
     padding: 1em;
     max-width: 1000px;
     margin: auto;
-    margin-bottom: 230px;
+    margin-bottom: 150px;
 
     display: flex;
 
@@ -46,11 +46,8 @@
     height: 100%;
     width: 100%;
     color: #497175;
-    position: absolute;
     font-weight: 800;
     font-size: 1.5em;
-    top: 0;
-    left: 0;
     opacity: 0.9;
 }
 
@@ -65,7 +62,7 @@
 
 .main-header {
     text-align: center;
-    padding: 3em 0 3em 0;
+    padding: 1em 0 2em 0;
     display: block;
 
     .container {

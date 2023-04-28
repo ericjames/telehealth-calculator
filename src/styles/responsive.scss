@@ -2,8 +2,10 @@
     body {
         font-size: 0.8em;
     }
+
     .Navigation {
         flex-wrap: wrap;
+
         .nav-toggle {
             margin-bottom: 1.5em;
         }
@@ -18,11 +20,18 @@
 
     .TotalsBanner {
         bottom: 0;
+
         .container {
+            font-size: 0.8em;
             padding: 1em 0 1em 0;
         }
+
         .total-set {
             margin-bottom: 1em;
         }
+    }
+
+    .Footer {
+        display: block;
     }
 }

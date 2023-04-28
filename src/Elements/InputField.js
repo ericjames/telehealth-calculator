@@ -61,9 +61,9 @@ const InputField = ({ setDataSheets, dataSheet, fieldIndex, field }) => {
 }
 
 function getMaxLength(field) {
-    let maxLength = 10; // a fair arbitrary default limit
+    let maxLength = 50; // a fair arbitrary default limit
     if (field.fieldType === "text") {
-        maxLength = 20;
+        maxLength = 100;
     } else {
         // All other field types are numbers
     }

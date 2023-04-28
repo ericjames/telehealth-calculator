@@ -190,7 +190,7 @@ function App() {
 
         <div className="Front" style={{ opacity: currentPage === 'home' ? 1 : 0.2 }}>
 
-          {!dataSheets ? <div className="Loading">Loading...</div> : null}
+          {!dataSheets ? <div className="Loading">Loading Calculator...</div> : null}
 
           <AppWithData text={text} dataSheets={dataSheets} setDataSheets={setDataSheets} setCurrentPage={setCurrentPage} />
 

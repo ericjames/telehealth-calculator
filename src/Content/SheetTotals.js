@@ -1,9 +1,9 @@
+import SheetTotalsAvoidable from './SheetTotalsAvoidable';
+import SheetTotalsAvoidableTransCosts from './SheetTotalsAvoidableTransCosts';
 import SheetTotalsLostProductivity from './SheetTotalsLostProductivity'
 import SheetTotalsPreventableAdmissions from './SheetTotalsPreventableAdmissions'
-import SheetTotalsAvoidable from './SheetTotalsAvoidable';
-import SheetTotalsPreventableReadmissions from './SheetTotalsPreventableReadmissions';
 import SheetTotalsPreventableERVisits from './SheetTotalsPreventableERVisits';
-import SheetTotalsAvoidableTransCosts from './SheetTotalsAvoidableTransCosts';
+import SheetTotalsPreventableReadmissions from './SheetTotalsPreventableReadmissions';
 
 const SheetTotals = ({ dataSheet }) => {
 
@@ -26,7 +26,6 @@ const SheetTotals = ({ dataSheet }) => {
 
     return (
         <div className="SheetTotals">
-            <h3>Total Savings</h3>
             <div className="SheetTotals-inner">
                 {comp}
             </div>

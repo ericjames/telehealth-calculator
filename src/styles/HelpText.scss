@@ -25,12 +25,15 @@
         z-index: 100;
         top: 2em;
         right: 1em;
-        width: 200px;
+        width: 300px;
+        font-size: 0.8em;
         background: #fff;
-        padding: 0.5em;
-        box-shadow: 0 0.2em 1em #aaa;
-        border-radius: 1em;
+        padding: 1em;
+        box-shadow: 0 0.3em 1em #888;
+        border-radius: 0.5em;
         display: none;
+        color: #222;
+        font-weight: 400;
 
         &.visible {
             display: block;

@@ -2,11 +2,16 @@
     text-align: center;
 
     h3 {
-        border-bottom: 1px solid #ccc;
+        border-bottom: 1px solid #477172;
         padding-bottom: 0em;
+        color: #477172;
     }
 
     h4 {
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 0.5em;
+        font-size: 1.3em;
+        color: #477172;
         margin-top: 0;
     }
 
@@ -18,6 +23,9 @@
     }
 
     .ResultGroup {
+        border-radius: 0.3em; 
+        margin: 0.2em;
+        padding: 0.5em 0.2em 0.5em 0.2em;
         margin-bottom: 1em;
 
 
@@ -56,7 +64,7 @@
                 display: block;
                 flex: 0 1 25%;
                 font-size: 1.5em;
-                color: #477172;
+                color: #000;
                 font-weight: 500;
             }
         }
